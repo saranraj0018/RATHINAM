@@ -208,6 +208,7 @@ function HeroSection() {
         </a>
       </div>
 
+
       {/* ── CENTER-LEFT CONTENT ── */}
       <div style={{
         position: "absolute", top: "50%", left: "8vw", transform: "translateY(-50%)", zIndex: 30,
@@ -419,32 +420,7 @@ function HeroSection() {
       </div>
 
       {/* Ticker */}
-      <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 30, overflow: "hidden",
-        borderTop: "1px solid rgba(255,255,255,.07)", background: "rgba(0,0,0,.50)", backdropFilter: "blur(16px)"
-      }}>
-        <div style={{ display: "flex", padding: "10px 0", animation: "ticker 25s linear infinite", whiteSpace: "nowrap" }}>
-          {[...Array(3)].fill([
-            { icon: "cap", text: "25,000+ Students" },
-            { icon: "award", text: "NAAC A++" },
-            { icon: "trending", text: "98% Placements" },
-            { icon: "globe", text: "80+ Global Partners" },
-            { icon: "send", text: "Admissions Open 2026" },
-            { icon: "book", text: "120+ Programs" },
-            { icon: "flask", text: "50+ Research Centres" },
-            { icon: "star", text: "NIRF Top 50" },
-          ]).flat().map((item, i) => (
-            <span key={i} style={{
-              fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 700,
-              textTransform: "uppercase", letterSpacing: ".16em", color: "rgba(255,255,255,.40)",
-              marginRight: 48, display: "inline-flex", alignItems: "center", gap: 8
-            }}>
-              <Icon name={item.icon} size={13} color="rgba(163,230,53,.55)" sw={2} />
-              {item.text}<span style={{ color: "rgba(163,230,53,.40)" }}>◆</span>
-            </span>
-          ))}
-        </div>
-      </div>
+      {/* Ticker moved to RecognitionSection */}
 
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -1865,13 +1841,13 @@ function ChairmanSection() {
    8. RECOGNITION — EARTH GLOBE LAYOUT
 ═══════════════════════════════════════════════════════════════════ */
 const recognitions = [
-  { topText: "QS I-Gauge", highlight: "PLATINUM", bottomText: "RANK", color: "#a855f7", offset: 0, height: 450 },
-  { topText: "Accredited", highlight: "A++", bottomText: "BY NAAC", color: "#38bdf8", offset: -40, height: 220 },
-  { topText: "NIRF Ranking", highlight: "9TH", bottomText: "YEAR IN A ROW", color: "#a3e635", offset: -80, height: 420 },
-  { topText: "Innovation", highlight: "TOP 50", bottomText: "IN INDIA", color: "#f472b6", offset: -100, height: 250 },
-  { topText: "Global Reach", highlight: "1000+", bottomText: "INT'L STUDENTS", color: "#fb923c", offset: -80, height: 420 },
-  { topText: "India's", highlight: "FIRST", bottomText: "INDUSTRY INTEGRATED", color: "#34d399", offset: -40, height: 220 },
-  { topText: "In-Campus", highlight: "ATAL", bottomText: "INCUBATION CENTRE", color: "#fbbf24", offset: 0, height: 450 },
+  { topText: "QS I-Gauge", highlight: "PLATINUM", bottomText: "RANK", color: "#a855f7", offset: 0, height: 500 },
+  { topText: "Accredited", highlight: "A++", bottomText: "BY NAAC", color: "#38bdf8", offset: -40, height: 260 },
+  { topText: "NIRF Ranking", highlight: "9TH", bottomText: "YEAR IN A ROW", color: "#a3e635", offset: -80, height: 480 },
+  { topText: "NIRF Innovation", highlight: "TOP 50", bottomText: "IN INDIA", color: "#f472b6", offset: -100, height: 300 },
+  { topText: "Global Reach", highlight: "1000+", bottomText: "INT'L STUDENTS", color: "#fb923c", offset: -80, height: 480 },
+  { topText: "India's", highlight: "FIRST", bottomText: "INDUSTRY INTEGRATED", color: "#34d399", offset: -40, height: 260 },
+  { topText: "In-Campus", highlight: "ATAL", bottomText: "INCUBATION CENTRE", color: "#fbbf24", offset: 0, height: 500 },
 ];
 
 function RecognitionSection() {
@@ -1880,7 +1856,7 @@ function RecognitionSection() {
   return (
     <section ref={ref} id="recognition" style={{
       background: "radial-gradient(ellipse at bottom, #1e1e38 0%, #0c0c18 80%)",
-      position: "relative", overflow: "hidden", width: "100%"
+      position: "relative", overflow: "hidden", width: "100%", height: "100vh"
     }}>
       {/* Background stars / grid */}
       <div style={{
@@ -1889,14 +1865,14 @@ function RecognitionSection() {
         backgroundSize: "60px 60px", zIndex: 1
       }} />
 
-      {/* The Earth Image - Now Native in DOM Flow to define Banner height */}
-      <div style={{ position: "relative", width: "100%", zIndex: 5 }}>
+      {/* The Earth Image - Now positioned absolutely at the bottom to fill height correctly */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 5 }}>
         <img
           src="/earth-half.png"
           alt="Earth Globe Background"
           style={{
-            width: "100%", height: "auto", display: "block", margin: "0 auto",
-            objectFit: "contain", objectPosition: "bottom center",
+            width: "100%", height: "100%", display: "block",
+            objectFit: "cover", objectPosition: "bottom center",
             opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(120px)",
             transition: "all 1.5s cubic-bezier(0.16, 1, 0.3, 1)"
           }}
@@ -1912,37 +1888,53 @@ function RecognitionSection() {
         }} />
       </div>
 
-      {/* Header - Now Absolute Over The Image */}
-      <div style={{ position: "absolute", top: "5%", left: 0, right: 0, zIndex: 10, width: "100%" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <div style={{
-            textAlign: "center",
-            opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(24px)", transition: "all .8s ease"
-          }}>
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 18px", borderRadius: 100,
-              background: "rgba(251,191,36,.08)", border: "1px solid rgba(251,191,36,.22)", marginBottom: 20
-            }}>
-              <Icon name="award" size={14} color="#fbbf24" sw={2} />
-              <span style={{
-                fontFamily: "'DM Sans',sans-serif", fontWeight: 700, fontSize: 11,
-                letterSpacing: ".28em", textTransform: "uppercase", color: "#fbbf24"
-              }}>Global Benchmark</span>
-            </div>
-            <h2 style={{
-              fontFamily: "'Sora',sans-serif", fontWeight: 900,
-              fontSize: "clamp(1.4rem,2.5vw,2.0rem)", color: "#f8fafc", letterSpacing: "-.02em",
-              marginBottom: 20, textShadow: "0 10px 40px rgba(0,0,0,0.8)"
-            }}>
-              Recognition That Reflects{" "}
-              <span style={{
-                background: "linear-gradient(90deg,#fbbf24,#fb923c)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
-              }}>Readiness</span>
-            </h2>
-          </div>
-        </div>
+      {/* ── 3 Circle Nav Bubbles — Vertical Left ── */}
+      <div style={{
+        position: "absolute", top: "50%", left: 36, transform: "translateY(-50%)", zIndex: 20,
+        display: "flex", flexDirection: "column", alignItems: "center", gap: 18
+      }}>
+        <a href="#ranking" title="Ranking and Excellence" style={{
+          width: 76, height: 76, borderRadius: "50%", display: "flex", flexDirection: "column",
+          alignItems: "center", justifyContent: "center", textDecoration: "none",
+          background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
+          backdropFilter: "blur(12px)", cursor: "pointer",
+          animation: "navFloat 4s ease-in-out infinite", transition: "all .4s"
+        }}
+          onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}>
+          <Icon name="award" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>Ranking &<br/>Excellence</span>
+        </a>
+
+        <a href="/landing" title="RGU Way" style={{
+          width: 76, height: 76, borderRadius: "50%", display: "flex", flexDirection: "column",
+          alignItems: "center", justifyContent: "center", textDecoration: "none",
+          background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
+          backdropFilter: "blur(12px)", cursor: "pointer",
+          animation: "navFloat 4s ease-in-out infinite 1.2s", transition: "all .4s"
+        }}
+          onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}>
+          <Icon name="zap" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>RGU<br/>Way</span>
+        </a>
+
+        <a href="#programs" title="Admissions Open" style={{
+          width: 76, height: 76, borderRadius: "50%", display: "flex", flexDirection: "column",
+          alignItems: "center", justifyContent: "center", textDecoration: "none",
+          background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
+          backdropFilter: "blur(12px)", cursor: "pointer",
+          animation: "navFloat 4s ease-in-out infinite 2.4s", transition: "all .4s"
+        }}
+          onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}>
+          <Icon name="send" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>Admissions<br/>Open</span>
+        </a>
       </div>
+
+      {/* Header removed as requested */}
+
 
       {/* Animated Satellite Nodes Mapping - Now Absolute Over The Image */}
       <div style={{
@@ -1974,7 +1966,7 @@ function RecognitionSection() {
 
             {/* Animated Vertical Line track */}
             <div style={{
-              width: 2, height: item.height, background: `linear-gradient(to top, transparent, ${item.color}40, transparent)`,
+              width: 3.5, height: item.height, background: `linear-gradient(to top, transparent, ${item.color}40, transparent)`,
               position: "relative", overflow: "hidden", opacity: vis ? 1 : 0,
               transition: `opacity 1s ease 1s`
             }}>
@@ -1990,9 +1982,41 @@ function RecognitionSection() {
         background: "linear-gradient(to top, rgba(12,12,24,1), transparent)", zIndex: 8
       }} />
 
+      {/* Ticker - Moved from HeroSection */}
+      <div style={{
+        position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 30, overflow: "hidden",
+        borderTop: "1px solid rgba(255,255,255,.07)", background: "rgba(0,0,0,.50)", backdropFilter: "blur(16px)"
+      }}>
+        <div style={{ display: "flex", padding: "10px 0", animation: "ticker 25s linear infinite", whiteSpace: "nowrap" }}>
+          {[...Array(3)].fill([
+            { icon: "cap", text: "25,000+ Students" },
+            { icon: "award", text: "NAAC A++" },
+            { icon: "trending", text: "98% Placements" },
+            { icon: "globe", text: "80+ Global Partners" },
+            { icon: "send", text: "Admissions Open 2026" },
+            { icon: "book", text: "120+ Programs" },
+            { icon: "flask", text: "50+ Research Centres" },
+            { icon: "star", text: "NIRF Top 50" },
+          ]).flat().map((item, i) => (
+            <span key={i} style={{
+              fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 700,
+              textTransform: "uppercase", letterSpacing: ".16em", color: "rgba(255,255,255,.40)",
+              marginRight: 48, display: "inline-flex", alignItems: "center", gap: 8
+            }}>
+              <Icon name={item.icon} size={13} color="rgba(163,230,53,.55)" sw={2} />
+              {item.text}<span style={{ color: "rgba(163,230,53,.40)" }}>◆</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* Internal Styles for Keyframes */}
       <style dangerouslySetInnerHTML={{
         __html: `
+        @keyframes navFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
         @keyframes shootUp {
           0% { transform: translateY(200%); opacity: 0; }
           20% { opacity: 1; }
@@ -2004,6 +2028,7 @@ function RecognitionSection() {
           border-radius: 10px; box-shadow: 0 0 10px currentColor;
           animation: shootUp 2.5s infinite linear;
         }
+        @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-33.33%)} }
       `}} />
     </section>
   );
@@ -2270,19 +2295,145 @@ function FooterSection() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
+   11. RANKING & EXCELLENCE
+═══════════════════════════════════════════════════════════════════ */
+const rankingCards = [
+  {
+    topText: "QS I-GAUGE", highlight: "PLATINUM", bottomText: "RANK", color: "#a855f7", icon: "award",
+    desc: "India's highest QS I-Gauge rating, recognising excellence across learning, employability, innovation, and global academic outlook."
+  },
+  {
+    topText: "ACCREDITED", highlight: "A++", bottomText: "BY NAAC", color: "#38bdf8", icon: "shield",
+    desc: "The highest grade by the National Assessment & Accreditation Council, affirming exceptional standards in teaching, research, and governance."
+  },
+  {
+    topText: "NIRF RANKING", highlight: "9TH", bottomText: "YEAR IN A ROW", color: "#a3e635", icon: "trending",
+    desc: "Consistently featured in the Ministry of Education's National Institutional Ranking Framework for nine consecutive years — a testament to sustained excellence."
+  },
+  {
+    topText: "NIRF INNOVATION", highlight: "TOP 50", bottomText: "IN INDIA", color: "#f472b6", icon: "lightbulb",
+    desc: "Ranked among India's top 50 most innovative institutions by NIRF, recognising pioneering research, patents, and entrepreneurial culture."
+  },
+  {
+    topText: "GLOBAL REACH", highlight: "1000+", bottomText: "INT'L STUDENTS", color: "#fb923c", icon: "globe",
+    desc: "Home to over 1,000 international students from 30+ countries, creating a vibrant, multicultural learning environment on campus."
+  },
+  {
+    topText: "INDIA'S", highlight: "FIRST", bottomText: "INDUSTRY INTEGRATED", color: "#34d399", icon: "cpu",
+    desc: "Pioneers of India's first fully industry-integrated curriculum, co-designed with leading corporates to bridge academic learning and real-world readiness."
+  },
+  {
+    topText: "IN-CAMPUS", highlight: "ATAL", bottomText: "INCUBATION CENTRE", color: "#fbbf24", icon: "zap",
+    desc: "A DST-recognised Atal Incubation Centre on campus, providing seed funding, mentoring, and infrastructure to nurture student-led startups and deep-tech innovations."
+  },
+];
+
+function RankingSection() {
+  const [ref, vis] = useVisible(0.06);
+  return (
+    <section ref={ref} id="ranking" style={{ background: "#f8fafc", padding: "100px 0 120px", position: "relative", overflow: "hidden" }}>
+
+      {/* Subtle background orbs */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <div style={{ position: "absolute", top: "-10%", right: "-5%", width: "45vw", height: "45vw", background: "radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 60%)", filter: "blur(80px)" }} />
+        <div style={{ position: "absolute", bottom: "-10%", left: "-5%", width: "45vw", height: "45vw", background: "radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 60%)", filter: "blur(80px)" }} />
+      </div>
+
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px", position: "relative", zIndex: 10 }}>
+
+        {/* Header */}
+        <div style={{
+          textAlign: "center", marginBottom: 60,
+          opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(28px)", transition: "all .8s ease"
+        }}>
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 18px", borderRadius: 100,
+            background: "rgba(251,191,36,.1)", border: "1px solid rgba(251,191,36,.3)", marginBottom: 22
+          }}>
+            <Icon name="award" size={14} color="#f59e0b" sw={2} />
+            <span style={{ fontFamily: "'DM Sans',sans-serif", fontWeight: 700, fontSize: 11, letterSpacing: ".28em", textTransform: "uppercase", color: "#f59e0b" }}>Global Benchmark</span>
+          </div>
+          <h2 style={{
+            fontFamily: "'Sora',sans-serif", fontWeight: 900,
+            fontSize: "clamp(2.2rem,4vw,3.4rem)", color: "#0f172a", letterSpacing: "-.04em", lineHeight: 1.05, marginBottom: 16
+          }}>
+            Ranking &{" "}
+            <span style={{ background: "linear-gradient(90deg,#a855f7,#38bdf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Excellence</span>
+          </h2>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", color: "rgba(15,23,42,.55)", fontSize: 16, maxWidth: 520, margin: "0 auto", lineHeight: 1.75 }}>
+            Recognised nationally and globally for academic rigour, innovation, and real-world impact.
+          </p>
+        </div>
+
+        {/* Cards grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
+          {rankingCards.map((card, i) => (
+            <div key={i}
+              style={{
+                background: "#ffffff", borderRadius: 24, padding: "32px 28px",
+                border: `1.5px solid ${card.color}22`,
+                boxShadow: `0 4px 24px rgba(0,0,0,0.06), 0 1px 4px ${card.color}15`,
+                position: "relative", overflow: "hidden",
+                opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(32px)",
+                transition: `all .7s ease ${i * 0.08}s`
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = `0 20px 48px rgba(0,0,0,0.1), 0 4px 16px ${card.color}25`; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = `0 4px 24px rgba(0,0,0,0.06), 0 1px 4px ${card.color}15`; }}>
+
+              {/* Top accent line */}
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${card.color}, ${card.color}44)`, borderRadius: "24px 24px 0 0" }} />
+
+              {/* Icon */}
+              <div style={{
+                width: 52, height: 52, borderRadius: 16, background: `${card.color}12`,
+                border: `1.5px solid ${card.color}30`,
+                display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20
+              }}>
+                <Icon name={card.icon} size={26} color={card.color} sw={1.8} />
+              </div>
+
+              {/* Label */}
+              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: ".2em", textTransform: "uppercase", color: `${card.color}`, marginBottom: 6 }}>
+                {card.topText}
+              </div>
+
+              {/* Highlight number */}
+              <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 900, fontSize: 40, color: "#0f172a", letterSpacing: "-.03em", lineHeight: 1, marginBottom: 4 }}>
+                {card.highlight}
+              </div>
+
+              {/* Sub-label */}
+              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "rgba(15,23,42,.4)", marginBottom: 16 }}>
+                {card.bottomText}
+              </div>
+
+              {/* Description */}
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(15,23,42,.55)", lineHeight: 1.7, margin: 0 }}>
+                {card.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════
    MAIN PAGE EXPORT
 ═══════════════════════════════════════════════════════════════════ */
 export default function AdmissionHomepage() {
   return (
     <>
+      <RecognitionSection />
       <HeroSection />
       <CoursesSection />
       <RGUWaySection />
       <HappeningSection />
       <LifeSection />
+      <RankingSection />
       <SpotlightSection />
       <ChairmanSection />
-      <RecognitionSection />
       <CTABanner />
       <FooterSection />
     </>
