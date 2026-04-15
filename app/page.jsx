@@ -237,19 +237,19 @@ function HeroSection() {
 
         {/* Main heading */}
         <h1 style={{
-          fontFamily: "'Sora',sans-serif", fontWeight: 900, lineHeight: .88, marginBottom: 20,
+          fontFamily: "'Sora',sans-serif", fontWeight: 900, lineHeight: 1.15, marginBottom: 28,
           opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(24px)", transition: "all .7s ease .25s"
         }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr" }}>
             <div style={{ gridRow: 1, gridColumn: 1, opacity: headingIdx === 0 ? 1 : 0, transition: "opacity 1s ease", pointerEvents: headingIdx === 0 ? "auto" : "none" }}>
               <span style={{
-                display: "block", fontSize: "clamp(2.2rem,5vw,4.4rem)", color: "transparent",
+                display: "block", fontSize: "clamp(2.5rem,6vw,5.2rem)", color: "transparent",
                 WebkitTextStroke: "1px rgba(255,255,255,.28)", letterSpacing: "-.03em"
               }}>
                 ADMISSION
               </span>
               <span style={{
-                display: "block", fontSize: "clamp(2.6rem,6vw,5.4rem)", color: "#fff",
+                display: "block", fontSize: "clamp(3.1rem,7.5vw,6.4rem)", color: "#fff",
                 letterSpacing: "-.04em", textShadow: "0 0 80px rgba(168,85,247,.65),0 0 160px rgba(168,85,247,.25)"
               }}>
                 OPEN 2026
@@ -258,13 +258,13 @@ function HeroSection() {
 
             <div style={{ gridRow: 1, gridColumn: 1, opacity: headingIdx === 1 ? 1 : 0, transition: "opacity 1s ease", pointerEvents: headingIdx === 1 ? "auto" : "none" }}>
               <span style={{
-                display: "block", fontSize: "clamp(2.2rem,5vw,4.4rem)", color: "transparent",
+                display: "block", fontSize: "clamp(2.5rem,6vw,5.2rem)", color: "transparent",
                 WebkitTextStroke: "1px rgba(255,255,255,.28)", letterSpacing: "-.03em"
               }}>
                 RGU SAT
               </span>
               <span style={{
-                display: "block", fontSize: "clamp(2.6rem,6vw,5.4rem)", color: "#fff",
+                display: "block", fontSize: "clamp(3.1rem,7.5vw,6.4rem)", color: "#fff",
                 letterSpacing: "-.04em", textShadow: "0 0 80px rgba(168,85,247,.65),0 0 160px rgba(168,85,247,.25)"
               }}>
                 2026
@@ -272,8 +272,8 @@ function HeroSection() {
             </div>
           </div>
           <span style={{
-            display: "block", fontSize: "clamp(1.1rem,2.2vw,1.7rem)", fontWeight: 600,
-            letterSpacing: ".01em", marginTop: 12,
+            display: "block", fontSize: "clamp(1.3rem,2.5vw,1.9rem)", fontWeight: 600,
+            letterSpacing: ".01em", marginTop: 16,
             background: "linear-gradient(90deg,#a3e635,#34d399,#38bdf8)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
           }}>
@@ -600,8 +600,8 @@ function CoursesSection() {
           </div>
           <h2 style={{
             fontFamily: "'Sora',sans-serif", fontWeight: 800,
-            fontSize: "clamp(2.4rem,4.5vw,3.8rem)", color: "#0f172a",
-            letterSpacing: "-.04em", lineHeight: 1.05, marginBottom: 18
+            fontSize: "clamp(2.8rem,5.5vw,4.6rem)", color: "#0f172a",
+            letterSpacing: "-.04em", lineHeight: 1.25, marginBottom: 24
           }}>
             Courses Offered{" "}
             <span style={{
@@ -652,6 +652,7 @@ function CoursesSection() {
                 {!dim && topCourses.map((c, idx) => {
                   const pos = scatterPositions[idx];
                   if (!pos) return null;
+                  const bRot = [3, -4.5, 2.8, -3.2, 4][idx % 5];
                   return (
                     <div key={idx} style={{
                       position: "absolute", zIndex: 20,
@@ -667,13 +668,13 @@ function CoursesSection() {
                           boxShadow: `0 8px 24px rgba(0,0,0,0.06), 0 2px 8px ${sc.color}15`,
                           fontFamily: "'DM Sans',sans-serif", fontSize: 10, fontWeight: 700,
                           color: sc.color, display: "flex", alignItems: "center", gap: 6,
-                          transform: isActive ? "scale(1.05) translateY(-5px)" : "scale(1)",
+                          transform: isActive ? "scale(1.05) translateY(-5px) rotate(0deg)" : `scale(1) rotate(${bRot}deg)`,
                           opacity: isActive ? 1 : 0.85,
                           transition: "all 0.4s cubic-bezier(.25,.8,.25,1)",
                           cursor: "pointer", outline: "none"
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.1) translateY(-6px)"; e.currentTarget.style.boxShadow = `0 12px 32px rgba(0,0,0,0.1), 0 4px 12px ${sc.color}25`; e.currentTarget.style.borderColor = `${sc.color}60`; }}
-                        onMouseLeave={e => { e.currentTarget.style.transform = isActive ? "scale(1.05) translateY(-5px)" : "scale(1)"; e.currentTarget.style.boxShadow = `0 8px 24px rgba(0,0,0,0.06), 0 2px 8px ${sc.color}15`; e.currentTarget.style.borderColor = `${sc.color}25`; }}
+                        onMouseEnter={e => { e.currentTarget.style.transform = `scale(1.1) translateY(-6px) rotate(${bRot * 0.5}deg)`; e.currentTarget.style.boxShadow = `0 12px 32px rgba(0,0,0,0.1), 0 4px 12px ${sc.color}25`; e.currentTarget.style.borderColor = `${sc.color}60`; }}
+                        onMouseLeave={e => { e.currentTarget.style.transform = isActive ? "scale(1.05) translateY(-5px) rotate(0deg)" : `scale(1) rotate(${bRot}deg)`; e.currentTarget.style.boxShadow = `0 8px 24px rgba(0,0,0,0.06), 0 2px 8px ${sc.color}15`; e.currentTarget.style.borderColor = `${sc.color}25`; }}
                         className="scatterBadge">
                         <span style={{ width: 4, height: 4, borderRadius: "50%", background: sc.color }} />
                         {c.replace("B.Tech ", "").replace("B.Sc ", "").replace("M.Sc ", "").replace("B.Com ", "").replace("MBA in ", "")}
@@ -890,7 +891,7 @@ function CoursesSection() {
                     </div>
                     <h3 style={{
                       fontFamily: "'Sora',sans-serif", fontWeight: 800,
-                      fontSize: "clamp(1.2rem,2.5vw,1.6rem)", color: "#0f172a", lineHeight: 1.2, margin: 0
+                      fontSize: "clamp(1.5rem,3vw,2.2rem)", color: "#0f172a", lineHeight: 1.4, margin: "0 0 10px 0"
                     }}>
                       {activeData.name}
                     </h3>
@@ -930,8 +931,9 @@ function CoursesSection() {
                         {pIdx + 1}
                       </span>
                       <h4 style={{
-                        fontFamily: "'DM Sans',sans-serif", fontSize: 12, fontWeight: 800,
-                        letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(15,23,42,.75)", margin: 0
+                        fontFamily: "'DM Sans',sans-serif", fontSize: 16, fontWeight: 800,
+                        letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(15,23,42,.75)", margin: 0,
+                        lineHeight: 1.6
                       }}>
                         {prog.category}
                       </h4>
@@ -1064,8 +1066,8 @@ function RGUWaySection() {
             </div>
             <h2 style={{
               fontFamily: "'Sora',sans-serif", fontWeight: 900,
-              fontSize: "clamp(2.4rem,4.5vw,3.8rem)", color: "#f8fafc", letterSpacing: "-.03em",
-              lineHeight: .95, marginBottom: 20
+              fontSize: "clamp(2.8rem,5.5vw,4.6rem)", color: "#f8fafc", letterSpacing: "-.03em",
+              lineHeight: 1.15, marginBottom: 24
             }}>
               What Makes<br />
               <span style={{
@@ -1117,8 +1119,8 @@ function RGUWaySection() {
                 }} />
                 <div style={{ marginBottom: 10 }}><Icon name={p.icon} size={28} color={p.color} sw={1.6} /></div>
                 <div style={{
-                  fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 14,
-                  color: "#f8fafc", marginBottom: 6, lineHeight: 1.2
+                  fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 18,
+                  color: "#f8fafc", marginBottom: 10, lineHeight: 1.4
                 }}>{p.title}</div>
                 <div style={{
                   fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: "rgba(255,255,255,.45)",
@@ -1335,7 +1337,7 @@ function HappeningSection() {
           <div>
             <h2 style={{
               fontFamily: "'Sora',sans-serif", fontWeight: 900,
-              fontSize: "clamp(2.4rem,5vw,4rem)", color: "#0f172a", letterSpacing: "-.03em", lineHeight: 1
+              fontSize: "clamp(2.8rem,5.5vw,4.6rem)", color: "#0f172a", letterSpacing: "-.03em", lineHeight: 1.2
             }}>
               Happening @{" "}
               <span style={{
@@ -1391,9 +1393,9 @@ function HappeningSection() {
                 onMouseLeave={e => { if (!isActive) { e.currentTarget.style.borderColor = "rgba(15,23,42,.06)"; e.currentTarget.style.background = "rgba(15,23,42,.03)"; } }}>
                 <Icon name={et.icon} size={15} color={isActive ? et.color : "rgba(15,23,42,.45)"} sw={2} />
                 <span style={{
-                  fontFamily: "'DM Sans',sans-serif", fontSize: 13, fontWeight: 700,
+                  fontFamily: "'DM Sans',sans-serif", fontSize: 15, fontWeight: 700,
                   color: isActive ? et.color : "rgba(15,23,42,.55)", letterSpacing: ".04em",
-                  transition: "color .3s"
+                  transition: "color .3s", lineHeight: 1.6
                 }}>
                   {et.cat}
                 </span>
@@ -1501,13 +1503,15 @@ function LifeSection() {
             </div>
             <h2 style={{
               fontFamily: "'Sora',sans-serif", fontWeight: 900,
-              fontSize: "clamp(2.4rem,5vw,4rem)", color: "#f8fafc", letterSpacing: "-.03em", lineHeight: 1, marginBottom: 20
+              fontSize: "clamp(2.8rem,5.5vw,4.6rem)", color: "#f8fafc", letterSpacing: "-.03em", lineHeight: 1.2, marginBottom: 24
             }}>
               Life @{" "}
               <span style={{
-                background: "linear-gradient(90deg,#a855f7,#f472b6)",
+                background: "linear-gradient(90deg,#34d399,#38bdf8)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
-              }}>Rathinam</span>
+              }}>
+                RGU Campus
+              </span>
             </h2>
             <p style={{ fontFamily: "'DM Sans',sans-serif", color: "rgba(255,255,255,.45)", fontSize: 16, lineHeight: 1.75 }}>
               University is more than a degree. It's where you discover yourself, build friendships, and develop lifelong skills.
@@ -1630,13 +1634,15 @@ function SpotlightSection() {
             </div>
             <h2 style={{
               fontFamily: "'Sora',sans-serif", fontWeight: 900,
-              fontSize: "clamp(2.4rem,5vw,4rem)", color: "#f8fafc", letterSpacing: "-.03em"
+              fontSize: "clamp(2.8rem,5.5vw,4.6rem)", color: "#f8fafc", letterSpacing: "-.03em", lineHeight: 1.25
             }}>
               Spotlight{" "}
               <span style={{
-                background: "linear-gradient(90deg,#a855f7,#f472b6)",
+                background: "linear-gradient(90deg,#fbbf24,#f87171)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
-              }}>Projects</span>
+              }}>
+                Success Stories
+              </span>
             </h2>
           </div>
           <a href="#" style={{
@@ -1682,8 +1688,8 @@ function SpotlightSection() {
                     {p.award}
                   </span>
                   <h4 style={{
-                    fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 20,
-                    color: "#f8fafc", lineHeight: 1.2
+                    fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 26,
+                    color: "#f8fafc", lineHeight: 1.4
                   }}>{p.title}</h4>
                 </div>
               </div>
@@ -1743,7 +1749,7 @@ function ChairmanSection() {
           </div>
           <h2 style={{
             fontFamily: "'Sora',sans-serif", fontWeight: 900,
-            fontSize: "clamp(2.4rem,5vw,4rem)", color: "#0f172a", letterSpacing: "-.03em"
+            fontSize: "clamp(2.8rem,5.5vw,4.6rem)", color: "#0f172a", letterSpacing: "-.03em", lineHeight: 1.2
           }}>
             Inspiring{" "}
             <span style={{
@@ -1842,11 +1848,12 @@ function ChairmanSection() {
 ═══════════════════════════════════════════════════════════════════ */
 const recognitions = [
   { topText: "QS I-Gauge", highlight: "PLATINUM", bottomText: "RANK", color: "#a855f7", offset: 0, height: 500 },
-  { topText: "Accredited", highlight: "A++", bottomText: "BY NAAC", color: "#38bdf8", offset: -40, height: 260 },
+  { topText: "NAAC", highlight: "A++", bottomText: "ACCREDITED", color: "#38bdf8", offset: -40, height: 260 },
   { topText: "NIRF Ranking", highlight: "9TH", bottomText: "YEAR IN A ROW", color: "#a3e635", offset: -80, height: 480 },
   { topText: "NIRF Innovation", highlight: "TOP 50", bottomText: "IN INDIA", color: "#f472b6", offset: -100, height: 300 },
-  { topText: "Global Reach", highlight: "1000+", bottomText: "INT'L STUDENTS", color: "#fb923c", offset: -80, height: 480 },
-  { topText: "India's", highlight: "FIRST", bottomText: "INDUSTRY INTEGRATED", color: "#34d399", offset: -40, height: 260 },
+  { topText: "Global Network", highlight: "100+", bottomText: "GLOBAL PARTNERS", color: "#6366f1", offset: -120, height: 360 },
+  { topText: "Global Reach", highlight: "1000+", bottomText: "INTERNATIONAL STUDENTS", color: "#fb923c", offset: -80, height: 480 },
+  { topText: "INDIA'S", highlight: "FIRST", bottomText: "INDUSTRY INTEGRATED INSTITUTE", color: "#34d399", offset: -40, height: 260 },
   { topText: "In-Campus", highlight: "ATAL", bottomText: "INCUBATION CENTRE", color: "#fbbf24", offset: 0, height: 500 },
 ];
 
@@ -1903,7 +1910,7 @@ function RecognitionSection() {
           onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}>
           <Icon name="award" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
-          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>Ranking &<br/>Excellence</span>
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>Ranking &<br />Excellence</span>
         </a>
 
         <a href="/landing" title="RGU Way" style={{
@@ -1916,7 +1923,7 @@ function RecognitionSection() {
           onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}>
           <Icon name="zap" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
-          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>RGU<br/>Way</span>
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>RGU<br />Way</span>
         </a>
 
         <a href="#programs" title="Admissions Open" style={{
@@ -1929,7 +1936,7 @@ function RecognitionSection() {
           onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}>
           <Icon name="send" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
-          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>Admissions<br/>Open</span>
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>Admissions<br />Open</span>
         </a>
       </div>
 
@@ -1953,13 +1960,13 @@ function RecognitionSection() {
               opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(24px)",
               transition: `all .8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.1 + 0.4}s`
             }}>
-              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 10, color: "rgba(255,255,255,0.6)", fontWeight: 700, letterSpacing: ".15em", textTransform: "uppercase", marginBottom: 6 }}>
+              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.6)", fontWeight: 700, letterSpacing: ".15em", textTransform: "uppercase", marginBottom: 6 }}>
                 {item.topText}
               </div>
-              <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 900, fontSize: 28, color: "#ffffff", lineHeight: 1, letterSpacing: "-.03em", textShadow: `0 0 24px ${item.color}80` }}>
+              <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 900, fontSize: 32, color: "#ffffff", lineHeight: 1, letterSpacing: "-.03em", textShadow: `0 0 24px ${item.color}80` }}>
                 {item.highlight}
               </div>
-              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.85)", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginTop: 6 }}>
+              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.85)", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginTop: 8 }}>
                 {item.bottomText}
               </div>
             </div>
@@ -1990,7 +1997,7 @@ function RecognitionSection() {
         <div style={{ display: "flex", padding: "10px 0", animation: "ticker 25s linear infinite", whiteSpace: "nowrap" }}>
           {[...Array(3)].fill([
             { icon: "cap", text: "25,000+ Students" },
-            { icon: "award", text: "NAAC A++" },
+            { icon: "award", text: "NAAC A++ ACCREDITED" },
             { icon: "trending", text: "98% Placements" },
             { icon: "globe", text: "80+ Global Partners" },
             { icon: "send", text: "Admissions Open 2026" },
@@ -2055,7 +2062,7 @@ function CTABanner() {
           }} />
           <h2 style={{
             fontFamily: "'Sora',sans-serif", fontWeight: 900,
-            fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: "#f8fafc", letterSpacing: "-.02em", marginBottom: 12
+            fontSize: "clamp(2.2rem, 3.5vw, 3rem)", color: "#f8fafc", letterSpacing: "-.02em", marginBottom: 16, lineHeight: 1.25
           }}>
             Ready to Begin Your Journey?
           </h2>
@@ -2330,6 +2337,49 @@ const rankingCards = [
 
 function RankingSection() {
   const [ref, vis] = useVisible(0.06);
+  const [layoutIdx, setLayoutIdx] = useState(0);
+
+  // Transitions between different bento grid configurations
+  const layouts = [
+    // Layout 1: Prominent QS and NAAC
+    [
+      { col: "span 2", row: "span 2" }, // QS
+      { col: "span 1", row: "span 2" }, // NAAC
+      { col: "span 1", row: "span 1" }, // NIRF 9
+      { col: "span 1", row: "span 1" }, // NIRF Innov
+      { col: "span 2", row: "span 1" }, // Global
+      { col: "span 1", row: "span 2" }, // First
+      { col: "span 1", row: "span 1" }, // Atal
+    ],
+    // Layout 2: Prominent NIRF and Global
+    [
+      { col: "span 1", row: "span 1" }, // QS
+      { col: "span 1", row: "span 1" }, // NAAC
+      { col: "span 2", row: "span 2" }, // NIRF 9
+      { col: "span 1", row: "span 2" }, // NIRF Innov
+      { col: "span 1", row: "span 2" }, // Global
+      { col: "span 2", row: "span 1" }, // First
+      { col: "span 1", row: "span 1" }, // Atal
+    ],
+    // Layout 3: Center-focused
+    [
+      { col: "span 2", row: "span 1" }, // QS
+      { col: "span 1", row: "span 2" }, // NAAC
+      { col: "span 1", row: "span 1" }, // NIRF 9
+      { col: "span 1", row: "span 1" }, // NIRF Innov
+      { col: "span 2", row: "span 2" }, // Global
+      { col: "span 1", row: "span 1" }, // First
+      { col: "span 1", row: "span 1" }, // Atal
+    ]
+  ];
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setLayoutIdx(prev => (prev + 1) % layouts.length);
+    }, 6000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <section ref={ref} id="ranking" style={{ background: "#f8fafc", padding: "100px 0 120px", position: "relative", overflow: "hidden" }}>
 
@@ -2355,7 +2405,7 @@ function RankingSection() {
           </div>
           <h2 style={{
             fontFamily: "'Sora',sans-serif", fontWeight: 900,
-            fontSize: "clamp(2.2rem,4vw,3.4rem)", color: "#0f172a", letterSpacing: "-.04em", lineHeight: 1.05, marginBottom: 16
+            fontSize: "clamp(2.8rem,5.5vw,4.6rem)", color: "#0f172a", letterSpacing: "-.04em", lineHeight: 1.25, marginBottom: 24
           }}>
             Ranking &{" "}
             <span style={{ background: "linear-gradient(90deg,#a855f7,#38bdf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Excellence</span>
@@ -2365,54 +2415,90 @@ function RankingSection() {
           </p>
         </div>
 
-        {/* Cards grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
-          {rankingCards.map((card, i) => (
-            <div key={i}
-              style={{
-                background: "#ffffff", borderRadius: 24, padding: "32px 28px",
-                border: `1.5px solid ${card.color}22`,
-                boxShadow: `0 4px 24px rgba(0,0,0,0.06), 0 1px 4px ${card.color}15`,
-                position: "relative", overflow: "hidden",
-                opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(32px)",
-                transition: `all .7s ease ${i * 0.08}s`
-              }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = `0 20px 48px rgba(0,0,0,0.1), 0 4px 16px ${card.color}25`; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = `0 4px 24px rgba(0,0,0,0.06), 0 1px 4px ${card.color}15`; }}>
+        {/* Dynamic Bento Grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gridAutoRows: "minmax(200px, auto)",
+          gap: 20,
+          transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)"
+        }}>
+          {rankingCards.map((card, i) => {
+            const span = layouts[layoutIdx][i] || { col: "span 1", row: "span 1" };
+            const isWide = span.col === "span 2";
+            const isTall = span.row === "span 2";
 
-              {/* Top accent line */}
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${card.color}, ${card.color}44)`, borderRadius: "24px 24px 0 0" }} />
+            return (
+              <div key={i}
+                style={{
+                  gridColumn: span.col,
+                  gridRow: span.row,
+                  background: "#ffffff", borderRadius: 24, padding: isWide ? "40px 36px" : "32px 28px",
+                  border: `1.5px solid ${card.color}22`,
+                  boxShadow: `0 4px 24px rgba(0,0,0,0.06), 0 1px 4px ${card.color}15`,
+                  position: "relative", overflow: "hidden",
+                  opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(32px)",
+                  transition: `all .7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s ease, grid-column 0.8s ease, grid-row 0.8s ease`,
+                  display: "flex", flexDirection: "column", justifyContent: "center"
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px) scale(1.01)"; e.currentTarget.style.boxShadow = `0 20px 48px rgba(0,0,0,0.1), 0 4px 16px ${card.color}25`; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = `0 4px 24px rgba(0,0,0,0.06), 0 1px 4px ${card.color}15`; }}>
 
-              {/* Icon */}
-              <div style={{
-                width: 52, height: 52, borderRadius: 16, background: `${card.color}12`,
-                border: `1.5px solid ${card.color}30`,
-                display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20
-              }}>
-                <Icon name={card.icon} size={26} color={card.color} sw={1.8} />
+                {/* Top accent line */}
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${card.color}, ${card.color}44)`, borderRadius: "24px 24px 0 0" }} />
+
+                {/* Background decorative Icon */}
+                <div style={{ position: "absolute", bottom: -20, right: -20, opacity: 0.03, transform: "rotate(-15deg)" }}>
+                  <Icon name={card.icon} size={180} color={card.color} sw={1} />
+                </div>
+
+                {/* Icon */}
+                <div style={{
+                  width: isWide ? 64 : 52, height: isWide ? 64 : 52, borderRadius: 16, background: `${card.color}12`,
+                  border: `1.5px solid ${card.color}30`,
+                  display: "flex", alignItems: "center", justifyContent: "center", marginBottom: isWide ? 26 : 20,
+                  transition: "all 0.4s"
+                }}>
+                  <Icon name={card.icon} size={isWide ? 32 : 26} color={card.color} sw={1.8} />
+                </div>
+
+                {/* Label */}
+                <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: ".2em", textTransform: "uppercase", color: `${card.color}`, marginBottom: 6 }}>
+                  {card.topText}
+                </div>
+
+                {/* Highlight number */}
+                <div style={{
+                  fontFamily: "'Sora',sans-serif", fontWeight: 900,
+                  fontSize: isWide ? "clamp(2.5rem, 4vw, 3.5rem)" : "clamp(1.8rem, 3vw, 2.5rem)",
+                  color: "#0f172a", letterSpacing: "-.03em", lineHeight: 1, marginBottom: 4,
+                  transition: "font-size 0.4s"
+                }}>
+                  {card.highlight}
+                </div>
+
+                {/* Sub-label */}
+                <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "rgba(15,23,42,.4)", marginBottom: 16 }}>
+                  {card.bottomText}
+                </div>
+
+                {/* Description - only show if tall or wide enough or hide if too small */}
+                <p style={{
+                  fontFamily: "'DM Sans',sans-serif",
+                  fontSize: isWide ? 15 : 13,
+                  color: "rgba(15,23,42,.55)",
+                  lineHeight: 1.6, margin: 0,
+                  display: "-webkit-box",
+                  WebkitLineClamp: isTall ? 5 : isWide ? 3 : 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  transition: "all 0.4s"
+                }}>
+                  {card.desc}
+                </p>
               </div>
-
-              {/* Label */}
-              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: ".2em", textTransform: "uppercase", color: `${card.color}`, marginBottom: 6 }}>
-                {card.topText}
-              </div>
-
-              {/* Highlight number */}
-              <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 900, fontSize: 40, color: "#0f172a", letterSpacing: "-.03em", lineHeight: 1, marginBottom: 4 }}>
-                {card.highlight}
-              </div>
-
-              {/* Sub-label */}
-              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "rgba(15,23,42,.4)", marginBottom: 16 }}>
-                {card.bottomText}
-              </div>
-
-              {/* Description */}
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(15,23,42,.55)", lineHeight: 1.7, margin: 0 }}>
-                {card.desc}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
