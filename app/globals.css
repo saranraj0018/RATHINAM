@@ -278,3 +278,95 @@ body {
 .progress-bar-purple { background: var(--accent-violet); }
 .progress-bar-blue   { background: var(--accent-sky);    }
 .progress-bar-green  { background: var(--accent-lime);   }
+
+/* ─── GLOBAL MOBILE RESPONSIVE OVERRIDES ─────────────────── */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  section {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* --- Hero Section --- */
+  div[style*="justifyContent: space-between"],
+  div[style*="justify-content: space-between"] {
+    padding: 16px !important;
+  }
+
+  div[style*="marginLeft: 8vw"] {
+    margin-left: 0 !important;
+    margin-top: 10px !important;
+  }
+
+  /* Center Content */
+  div[style*="left: 8vw"] {
+    left: 16px !important;
+    padding: 0 !important;
+    width: calc(100vw - 32px) !important;
+    top: 40% !important;
+  }
+
+  /* Apply and Explore buttons stack */
+  a[href="#apply"], a[href="/landing"] {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  a[href="/landing"] {
+    margin-left: 0 !important;
+    margin-top: 12px !important;
+    border-color: rgba(255,255,255,0.4) !important;
+  }
+
+  div[style*="bottom: 36"] {
+    bottom: 12px !important;
+    right: 12px !important;
+    transform: scale(0.8) !important;
+    transform-origin: bottom right;
+  }
+
+  /* --- Grid Adjustments --- */
+  div[style*="display: grid"],
+  div[style*="display:grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  div[style*="repeat(4, 1fr)"],
+  div[style*="repeat(4,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  /* Ranking / Bento Grid Resets */
+  div[style*="span 2"] {
+    grid-column: span 1 !important;
+    grid-row: auto !important;
+  }
+
+  /* --- Courses Section --- */
+  .scatterBadge {
+    display: none !important;
+  }
+
+  /* --- Container Margins --- */
+  div[style*="padding: 0 32px"], 
+  div[style*="padding: 0px 32px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Font Scaling adjustments */
+  h1 span {
+    font-size: min(10vw, 3.5rem) !important;
+    line-height: 1.1 !important;
+  }
+  h2 {
+    font-size: clamp(2rem, 8vw, 2.5rem) !important;
+    line-height: 1.2 !important;
+  }
+}

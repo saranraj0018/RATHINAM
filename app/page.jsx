@@ -136,7 +136,7 @@ function HeroSection() {
   const stat = statsCarousel[sIdx];
 
   return (
-    <section ref={secRef} style={{ position: "relative", height: "100vh", minHeight: 640, overflow: "hidden", background: "#050510" }}>
+    <section id="hero-section" ref={secRef} style={{ position: "relative", height: "100vh", minHeight: 640, overflow: "hidden", background: "#050510" }}>
 
       {/* Cinematic bars */}
       <div style={{
