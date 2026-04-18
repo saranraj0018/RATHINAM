@@ -131,17 +131,17 @@ export default function Hero() {
             </div>
 
             {/* H1 */}
-            <h1 className="font-outfit font-black leading-[0.9]"
+            <h1 className="font-outfit font-black leading-[1.1] md:leading-[0.9]"
               style={{ animation: mounted ? "heroFadeUp .7s ease forwards .25s" : undefined, opacity: mounted ? undefined : 0 }}>
-              <span className="block text-[clamp(2.6rem,6.2vw,5.4rem)] mb-1"
+              <span className="block text-[clamp(1.8rem,6.2vw,5.4rem)] mb-1"
                 style={{ WebkitTextStroke:"1px rgba(255,255,255,.26)", color:"transparent", letterSpacing:"-0.03em" }}>
                 Where Students
               </span>
-              <span className="block text-[clamp(3.2rem,7.8vw,7rem)] text-white"
+              <span className="block text-[clamp(2.2rem,7.8vw,7rem)] text-white"
                 style={{ letterSpacing:"-0.04em", animation:"glowPulse 4s ease-in-out infinite" }}>
                 Transform
               </span>
-              <span className="block text-[clamp(2.4rem,5.8vw,5.2rem)] mt-1"
+              <span className="block text-[clamp(1.8rem,5.8vw,5.2rem)] mt-1"
                 style={{ background:"linear-gradient(90deg,#a3e635 0%,#34d399 45%,#38bdf8 100%)",
                   WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text", letterSpacing:"-0.03em" }}>
                 Into Leaders.

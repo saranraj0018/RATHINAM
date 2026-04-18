@@ -180,17 +180,11 @@ function HeroSection() {
       }} />
 
       {/* ── TOP BAR ── */}
-      <div style={{
-        position: "absolute", top: 0, left: 0, right: 0, zIndex: 40, display: "flex", alignItems: "center",
-        justifyContent: "space-between", padding: "20px 36px"
-      }}>
+      <div className="absolute top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-4 md:px-9 md:py-5">
 
         {/* Logo */}
-        <div style={{
-          marginLeft: "8vw", marginTop: "24px", background: "rgba(255,255,255,.94)", borderRadius: 14, padding: "10px 24px", display: "flex", alignItems: "center",
-          boxShadow: "0 6px 24px rgba(0,0,0,.35)", backdropFilter: "blur(12px)"
-        }}>
-          <img src="/logo.png" alt="RGU" style={{ height: 76, width: "auto", objectFit: "contain" }} />
+        <div className="mt-4 md:mt-6 ml-2 md:ml-[8vw] bg-white/95 rounded-xl px-4 py-2 md:px-6 md:py-2.5 flex items-center shadow-[0_6px_24px_rgba(0,0,0,0.35)] backdrop-blur-md">
+          <img src="/logo.png" alt="RGU" className="h-10 md:h-[76px] w-auto object-contain" />
         </div>
 
         {/* Admission Enquiry button */}
@@ -210,10 +204,7 @@ function HeroSection() {
 
 
       {/* ── CENTER-LEFT CONTENT ── */}
-      <div style={{
-        position: "absolute", top: "50%", left: "8vw", transform: "translateY(-50%)", zIndex: 30,
-        padding: "0 36px", maxWidth: 680
-      }}>
+      <div className="absolute top-[45%] md:top-1/2 left-0 md:left-[8vw] -translate-y-1/2 z-30 px-6 md:px-9 w-full md:max-w-[680px]">
 
         {/* Live dot + label */}
         <div style={{
@@ -355,8 +346,7 @@ function HeroSection() {
 
 
       {/* ── BOTTOM RIGHT — Stats carousel ── */}
-      <div style={{
-        position: "absolute", bottom: 36, right: 36, zIndex: 30,
+      <div className="hidden md:block absolute bottom-9 right-9 z-30" style={{
         opacity: mounted ? 1 : 0, transition: "opacity .6s ease .7s"
       }}>
         <div style={{
