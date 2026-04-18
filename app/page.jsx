@@ -1862,7 +1862,7 @@ function RecognitionSection() {
 
   return (
     <section ref={ref} id="recognition" style={{
-      background: "radial-gradient(ellipse at bottom, #1e1e38 0%, #0c0c18 80%)",
+      background: "#000000",
       position: "relative", overflow: "hidden", width: "100%", height: "100vh"
     }}>
       {/* Background stars / grid */}
