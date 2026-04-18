@@ -644,7 +644,7 @@ function CoursesSection() {
                   if (!pos) return null;
                   const bRot = [3, -4.5, 2.8, -3.2, 4][idx % 5];
                   return (
-                    <div key={idx} style={{
+                    <div key={idx} className="hidden lg:block" style={{
                       position: "absolute", zIndex: 20,
                       top: pos.top, left: pos.left, right: pos.right, bottom: pos.bottom,
                       animation: `floatCourse 6s ease-in-out infinite`,
@@ -677,9 +677,9 @@ function CoursesSection() {
                   onClick={() => !dim && setActiveSchool(isActive ? null : sc.name)}
                   style={{
                     display: "flex", flexDirection: "column", alignItems: "center", gap: 13,
-                    padding: "26px 22px 20px", borderRadius: 28,
+                    padding: "26px 16px 20px", borderRadius: 28,
                     cursor: dim ? "default" : "pointer", outline: "none",
-                    width: 176, minHeight: 200, zIndex: 10,
+                    minHeight: 200, zIndex: 10,
                     background: `linear-gradient(135deg, ${sc.color} 0%, ${sc.colorHi || sc.color} 100%)`,
                     border: `1px solid rgba(255,255,255,0.4)`,
                     boxShadow: isActive
@@ -689,7 +689,7 @@ function CoursesSection() {
                     transform: isActive ? "scale(1.06)" : "scale(1)",
                     position: "relative", overflow: "hidden",
                   }}
-                  className="schoolCardBtn"
+                  className="schoolCardBtn w-[155px] sm:w-[176px]"
                   onMouseEnter={e => { if (!isActive && !dim) { e.currentTarget.style.transform = "scale(1.05)"; e.currentTarget.style.boxShadow = `0 20px 48px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.08), inset 0 2px 4px rgba(255,255,255,0.6)`; } }}
                   onMouseLeave={e => { if (!isActive && !dim) { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = `0 10px 24px rgba(0,0,0,0.06), inset 0 2px 4px rgba(255,255,255,0.4)`; } }}>
 
@@ -817,24 +817,37 @@ function CoursesSection() {
           return (
             <div style={{ opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(30px)", transition: "all .8s ease .3s" }}>
 
-              {/* ── ROW 1 — top 3 bubbles ── */}
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: 140, marginBottom: 70 }}>
-                <Bubble sc={schoolsConfig[0]} i={0} extraStyle={{ transform: "translateY(30px) translateX(-60px)" }} />
-                <Bubble sc={schoolsConfig[1]} i={1} extraStyle={{ transform: "translateY(-50px)" }} />
-                <Bubble sc={schoolsConfig[2]} i={2} extraStyle={{ transform: "translateY(40px) translateX(60px)" }} />
+              {/* ── DESKTOP SCATTER LAYOUT ── */}
+              <div className="hidden lg:block">
+                {/* ── ROW 1 — top 3 bubbles ── */}
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: 140, marginBottom: 70 }}>
+                  <Bubble sc={schoolsConfig[0]} i={0} extraStyle={{ transform: "translateY(30px) translateX(-60px)" }} />
+                  <Bubble sc={schoolsConfig[1]} i={1} extraStyle={{ transform: "translateY(-50px)" }} />
+                  <Bubble sc={schoolsConfig[2]} i={2} extraStyle={{ transform: "translateY(40px) translateX(60px)" }} />
+                </div>
+
+                {/* ── ROW 2 — bubble | SEARCH BAR | bubble ── */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 140, marginBottom: 70, position: "relative", zIndex: 11 }}>
+                  <Bubble sc={schoolsConfig[3]} i={3} extraStyle={{ transform: "translateX(-60px) translateY(12px)" }} />
+                  {SearchBar}
+                  <Bubble sc={schoolsConfig[4]} i={4} extraStyle={{ transform: "translateX(60px) translateY(-12px)" }} />
+                </div>
+
+                {/* ── ROW 3 — bottom 2 bubbles ── */}
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 220, marginBottom: 40 }}>
+                  <Bubble sc={schoolsConfig[5]} i={5} extraStyle={{ transform: "translateY(55px) translateX(-60px)" }} />
+                  <Bubble sc={schoolsConfig[6]} i={6} extraStyle={{ transform: "translateY(38px) translateX(60px)" }} />
+                </div>
               </div>
 
-              {/* ── ROW 2 — bubble | SEARCH BAR | bubble ── */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 140, marginBottom: 70, position: "relative", zIndex: 11 }}>
-                <Bubble sc={schoolsConfig[3]} i={3} extraStyle={{ transform: "translateX(-60px) translateY(12px)" }} />
+              {/* ── MOBILE STACKED LAYOUT ── */}
+              <div className="flex lg:hidden flex-col gap-10 mt-6 md:mt-10 px-4">
                 {SearchBar}
-                <Bubble sc={schoolsConfig[4]} i={4} extraStyle={{ transform: "translateX(60px) translateY(-12px)" }} />
-              </div>
-
-              {/* ── ROW 3 — bottom 2 bubbles ── */}
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 220, marginBottom: 40 }}>
-                <Bubble sc={schoolsConfig[5]} i={5} extraStyle={{ transform: "translateY(55px) translateX(-60px)" }} />
-                <Bubble sc={schoolsConfig[6]} i={6} extraStyle={{ transform: "translateY(38px) translateX(60px)" }} />
+                <div className="grid grid-cols-2 place-items-center gap-4 sm:gap-6 mt-4">
+                  {schoolsConfig.map((sc, index) => (
+                    <Bubble key={index} sc={sc} i={index} />
+                  ))}
+                </div>
               </div>
 
             </div>
@@ -1934,16 +1947,10 @@ function RecognitionSection() {
 
 
       {/* Animated Satellite Nodes Mapping - Now Absolute Over The Image */}
-      <div style={{
-        position: "absolute", bottom: "16%", left: 0, right: 0,
-        display: "flex", justifyContent: "space-evenly", alignItems: "flex-end",
-        padding: "0 20px", zIndex: 10
-      }}>
+      <div className="absolute bottom-[2%] lg:bottom-[16%] left-0 right-0 flex lg:justify-evenly items-end px-5 z-10 w-full overflow-x-auto lg:overflow-visible flex-nowrap gap-8 lg:gap-0 snap-x snap-mandatory pb-8 lg:pb-0 scroll-smooth" style={{ scrollbarWidth: "none" }}>
         {recognitions.map((item, i) => (
-          <div key={i} style={{
-            position: "relative", display: "flex", flexDirection: "column", alignItems: "center",
-            transform: `translateY(${item.offset}px)`, width: 140
-          }}>
+          <div key={i} className="rec-node snap-center shrink-0 relative flex flex-col items-center w-[130px] lg:w-[140px]"
+               style={{ transform: `translateY(${item.offset}px)` }}>
             {/* Node Card - Infographic Style */}
             <div style={{
               textAlign: "center", marginBottom: 12,
@@ -1953,7 +1960,7 @@ function RecognitionSection() {
               <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.6)", fontWeight: 700, letterSpacing: ".15em", textTransform: "uppercase", marginBottom: 6 }}>
                 {item.topText}
               </div>
-              <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 900, fontSize: 32, color: "#ffffff", lineHeight: 1, letterSpacing: "-.03em", textShadow: `0 0 24px ${item.color}80` }}>
+              <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 900, fontSize: "clamp(22px, 3.5vw, 32px)", color: "#ffffff", lineHeight: 1, letterSpacing: "-.03em", textShadow: `0 0 24px ${item.color}80` }}>
                 {item.highlight}
               </div>
               <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.85)", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginTop: 8 }}>
@@ -2026,6 +2033,9 @@ function RecognitionSection() {
           animation: shootUp 2.5s infinite linear;
         }
         @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-33.33%)} }
+        @media (max-width: 1023px) {
+          .rec-node { transform: translateY(0px) !important; }
+        }
       `}} />
     </section>
   );
