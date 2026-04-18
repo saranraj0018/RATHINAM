@@ -1946,10 +1946,10 @@ function RecognitionSection() {
       {/* Header removed as requested */}
 
 
-      {/* Animated Satellite Nodes Mapping - Now Absolute Over The Image */}
-      <div className="absolute bottom-[2%] lg:bottom-[16%] left-0 right-0 flex lg:justify-evenly items-end px-5 z-10 w-full overflow-x-auto lg:overflow-visible flex-nowrap gap-8 lg:gap-0 snap-x snap-mandatory pb-8 lg:pb-0 scroll-smooth" style={{ scrollbarWidth: "none" }}>
+      {/* Animated Satellite Nodes Mapping - Grid layout on Mobile, Scattered Flex on Desktop */}
+      <div className="absolute top-16 sm:top-24 md:top-auto md:bottom-20 lg:bottom-[16%] left-0 right-0 grid grid-cols-2 md:grid-cols-4 lg:flex lg:justify-evenly items-start lg:items-end px-6 sm:px-10 lg:px-5 z-10 w-full gap-y-8 lg:gap-0">
         {recognitions.map((item, i) => (
-          <div key={i} className="rec-node snap-center shrink-0 relative flex flex-col items-center w-[130px] lg:w-[140px]"
+          <div key={i} className="rec-node relative flex flex-col items-center w-full lg:w-[140px]"
                style={{ transform: `translateY(${item.offset}px)` }}>
             {/* Node Card - Infographic Style */}
             <div style={{
@@ -1968,8 +1968,8 @@ function RecognitionSection() {
               </div>
             </div>
 
-            {/* Animated Vertical Line track */}
-            <div style={{
+            {/* Animated Vertical Line track - Hidden on mobile so stacking grid looks neat */}
+            <div className="hidden lg:block" style={{
               width: 3.5, height: item.height, background: `linear-gradient(to top, transparent, ${item.color}40, transparent)`,
               position: "relative", overflow: "hidden", opacity: vis ? 1 : 0,
               transition: `opacity 1s ease 1s`
