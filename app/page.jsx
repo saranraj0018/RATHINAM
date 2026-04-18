@@ -1900,8 +1900,8 @@ function RecognitionSection() {
 
       {/* ── 3 Circle Nav Bubbles — Mobile: Horizontal over Earth | Desktop: Vertical Left ── */}
       <div className="absolute flex flex-row lg:flex-col items-center gap-4 lg:gap-[18px] bottom-[12%] sm:bottom-24 lg:bottom-auto lg:top-1/2 left-0 right-0 lg:right-auto lg:left-[36px] justify-center lg:justify-start z-20 lg:-translate-y-1/2">
-        <a href="#ranking" title="Ranking and Excellence" style={{
-          width: 76, height: 76, borderRadius: "50%", display: "flex", flexDirection: "column",
+        <a href="#ranking" title="Ranking and Excellence" className="shrink-0" style={{
+          width: 76, height: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center", textDecoration: "none",
           background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
           backdropFilter: "blur(12px)", cursor: "pointer",
@@ -1913,8 +1913,8 @@ function RecognitionSection() {
           <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>Ranking &<br />Excellence</span>
         </a>
 
-        <a href="/landing" title="RGU Way" style={{
-          width: 76, height: 76, borderRadius: "50%", display: "flex", flexDirection: "column",
+        <a href="/landing" title="RGU Way" className="shrink-0" style={{
+          width: 76, height: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center", textDecoration: "none",
           background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
           backdropFilter: "blur(12px)", cursor: "pointer",
@@ -1926,8 +1926,8 @@ function RecognitionSection() {
           <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>RGU<br />Way</span>
         </a>
 
-        <a href="#programs" title="Admissions Open" style={{
-          width: 76, height: 76, borderRadius: "50%", display: "flex", flexDirection: "column",
+        <a href="#programs" title="Admissions Open" className="shrink-0" style={{
+          width: 76, height: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center", textDecoration: "none",
           background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
           backdropFilter: "blur(12px)", cursor: "pointer",
@@ -2412,25 +2412,27 @@ function RankingSection() {
           </p>
         </div>
 
+        <style dangerouslySetInnerHTML={{ __html: `
+          @media (min-width: 1024px) {
+            .ranking-card { grid-column: var(--desktop-col) !important; grid-row: var(--desktop-row) !important; }
+          }
+        ` }} />
         {/* Dynamic Bento Grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gridAutoRows: "minmax(200px, auto)",
-          gap: 20,
-          transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)"
-        }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[minmax(200px,auto)]"
+             style={{ transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)" }}>
           {rankingCards.map((card, i) => {
             const span = layouts[layoutIdx][i] || { col: "span 1", row: "span 1" };
             const isWide = span.col === "span 2";
             const isTall = span.row === "span 2";
 
             return (
-              <div key={i}
+              <div key={i} className="ranking-card"
                 style={{
-                  gridColumn: span.col,
-                  gridRow: span.row,
-                  background: "#ffffff", borderRadius: 24, padding: isWide ? "40px 36px" : "32px 28px",
+                  "--desktop-col": span.col,
+                  "--desktop-row": span.row,
+                  gridColumn: "span 1",
+                  gridRow: "span 1",
+                  background: "#ffffff", borderRadius: 24, padding: "32px 24px",
                   border: `1.5px solid ${card.color}22`,
                   boxShadow: `0 4px 24px rgba(0,0,0,0.06), 0 1px 4px ${card.color}15`,
                   position: "relative", overflow: "hidden",
