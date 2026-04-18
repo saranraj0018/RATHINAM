@@ -1901,8 +1901,8 @@ function RecognitionSection() {
       {/* ── 3 Circle Nav Bubbles — Mobile: Horizontal over Earth | Desktop: Vertical Left ── */}
       <div className="absolute flex flex-row lg:flex-col items-center gap-4 lg:gap-[18px] bottom-[12%] sm:bottom-24 lg:bottom-auto lg:top-1/2 left-0 right-0 lg:right-auto lg:left-[36px] justify-center lg:justify-start z-20 lg:-translate-y-1/2">
         <a href="#ranking" title="Ranking and Excellence" className="shrink-0" style={{
-          width: 76, height: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "center", textDecoration: "none",
+          width: 76, height: 76, minWidth: 76, minHeight: 76, maxWidth: 76, maxHeight: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
+          alignItems: "center", justifyContent: "center", textDecoration: "none", overflow: "hidden",
           background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
           backdropFilter: "blur(12px)", cursor: "pointer",
           animation: "navFloat 4s ease-in-out infinite", transition: "all .4s"
@@ -1914,8 +1914,8 @@ function RecognitionSection() {
         </a>
 
         <a href="/landing" title="RGU Way" className="shrink-0" style={{
-          width: 76, height: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "center", textDecoration: "none",
+          width: 76, height: 76, minWidth: 76, minHeight: 76, maxWidth: 76, maxHeight: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
+          alignItems: "center", justifyContent: "center", textDecoration: "none", overflow: "hidden",
           background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
           backdropFilter: "blur(12px)", cursor: "pointer",
           animation: "navFloat 4s ease-in-out infinite 1.2s", transition: "all .4s"
@@ -1927,8 +1927,8 @@ function RecognitionSection() {
         </a>
 
         <a href="#programs" title="Admissions Open" className="shrink-0" style={{
-          width: 76, height: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "center", textDecoration: "none",
+          width: 76, height: 76, minWidth: 76, minHeight: 76, maxWidth: 76, maxHeight: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
+          alignItems: "center", justifyContent: "center", textDecoration: "none", overflow: "hidden",
           background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
           backdropFilter: "blur(12px)", cursor: "pointer",
           animation: "navFloat 4s ease-in-out infinite 2.4s", transition: "all .4s"
