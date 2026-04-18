@@ -1898,11 +1898,8 @@ function RecognitionSection() {
         }} />
       </div>
 
-      {/* ── 3 Circle Nav Bubbles — Vertical Left ── */}
-      <div style={{
-        position: "absolute", top: "50%", left: 36, transform: "translateY(-50%)", zIndex: 20,
-        display: "flex", flexDirection: "column", alignItems: "center", gap: 18
-      }}>
+      {/* ── 3 Circle Nav Bubbles — Mobile: Horizontal over Earth | Desktop: Vertical Left ── */}
+      <div className="absolute flex flex-row lg:flex-col items-center gap-4 lg:gap-[18px] bottom-[12%] sm:bottom-24 lg:bottom-auto lg:top-1/2 left-0 right-0 lg:right-auto lg:left-[36px] justify-center lg:justify-start z-20 lg:-translate-y-1/2">
         <a href="#ranking" title="Ranking and Excellence" style={{
           width: 76, height: 76, borderRadius: "50%", display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center", textDecoration: "none",
