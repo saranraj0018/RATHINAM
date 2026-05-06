@@ -1898,6 +1898,7 @@ function RecognitionSection() {
         }} />
       </div>
 
+
       {/* ── 3 Circle Nav Bubbles — Mobile: Horizontal over Earth | Desktop: Vertical Left ── */}
       <div className="absolute flex flex-row lg:flex-col items-center gap-4 lg:gap-[18px] bottom-[12%] sm:bottom-24 lg:bottom-auto lg:top-1/2 left-0 right-0 lg:right-auto lg:left-[36px] justify-center lg:justify-start z-20 lg:-translate-y-1/2">
         <a href="#ranking" title="Ranking and Excellence" className="shrink-0" style={{
