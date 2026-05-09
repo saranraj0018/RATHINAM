@@ -2194,48 +2194,48 @@ function FooterSection() {
           </div>
 
           {/* Schools */}
-          <div>
-            <h5 style={{
-              fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 11,
-              letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(255,255,255,.35)", marginBottom: 20
-            }}>Schools</h5>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {schoolLinks.map(l => (
-                <li key={l} style={{ marginBottom: 10 }}>
-                  <a href="#" style={{
-                    fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(255,255,255,.40)",
-                    textDecoration: "none", transition: "color .2s"
-                  }}
-                    onMouseEnter={e => { e.currentTarget.style.color = "rgba(255,255,255,.8)" }}
-                    onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,.40)" }}>
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/*<div>*/}
+          {/*  <h5 style={{*/}
+          {/*    fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 11,*/}
+          {/*    letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(255,255,255,.35)", marginBottom: 20*/}
+          {/*  }}>Schools</h5>*/}
+          {/*  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>*/}
+          {/*    {schoolLinks.map(l => (*/}
+          {/*      <li key={l} style={{ marginBottom: 10 }}>*/}
+          {/*        <a href="#" style={{*/}
+          {/*          fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(255,255,255,.40)",*/}
+          {/*          textDecoration: "none", transition: "color .2s"*/}
+          {/*        }}*/}
+          {/*          onMouseEnter={e => { e.currentTarget.style.color = "rgba(255,255,255,.8)" }}*/}
+          {/*          onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,.40)" }}>*/}
+          {/*          {l}*/}
+          {/*        </a>*/}
+          {/*      </li>*/}
+          {/*    ))}*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
 
           {/* Admissions */}
-          <div>
-            <h5 style={{
-              fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 11,
-              letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(255,255,255,.35)", marginBottom: 20
-            }}>Admissions</h5>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {admissionLinks.map(l => (
-                <li key={l} style={{ marginBottom: 10 }}>
-                  <a href="#" style={{
-                    fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(255,255,255,.40)",
-                    textDecoration: "none", transition: "color .2s"
-                  }}
-                    onMouseEnter={e => { e.currentTarget.style.color = "rgba(255,255,255,.8)" }}
-                    onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,.40)" }}>
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/*<div>*/}
+          {/*  <h5 style={{*/}
+          {/*    fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 11,*/}
+          {/*    letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(255,255,255,.35)", marginBottom: 20*/}
+          {/*  }}>Admissions</h5>*/}
+          {/*  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>*/}
+          {/*    {admissionLinks.map(l => (*/}
+          {/*      <li key={l} style={{ marginBottom: 10 }}>*/}
+          {/*        <a href="#" style={{*/}
+          {/*          fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(255,255,255,.40)",*/}
+          {/*          textDecoration: "none", transition: "color .2s"*/}
+          {/*        }}*/}
+          {/*          onMouseEnter={e => { e.currentTarget.style.color = "rgba(255,255,255,.8)" }}*/}
+          {/*          onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,.40)" }}>*/}
+          {/*          {l}*/}
+          {/*        </a>*/}
+          {/*      </li>*/}
+          {/*    ))}*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
 
           {/* Contact */}
           <div>
@@ -2245,9 +2245,7 @@ function FooterSection() {
             }}>Contact</h5>
             {[
               { icon: "mapPin", val: "Eachanari, Coimbatore\nTamil Nadu – 641 021" },
-              { icon: "phone", val: "+91-422-234-5678" },
-              { icon: "mail", val: "admissions@rgu.edu.in" },
-              { icon: "globe", val: "www.rgu.edu.in" },
+              { icon: "phone", val: "+91-844-844-8909" },
             ].map(c => (
               <div key={c.icon} style={{ display: "flex", gap: 10, marginBottom: 16, alignItems: "flex-start" }}>
                 <span style={{ marginTop: 2, flexShrink: 0 }}>
