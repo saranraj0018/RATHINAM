@@ -2279,18 +2279,18 @@ function FooterSection() {
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: "rgba(255,255,255,.22)" }}>
             © 2026 Rathinam Global University. All rights reserved. Deemed to be University u/s 3 of UGC Act, 1956.
           </p>
-          <div style={{ display: "flex", gap: 24 }}>
-            {["Privacy Policy", "Terms of Use", "Accessibility", "Sitemap", "RTI"].map(l => (
-              <a key={l} href="#" style={{
-                fontFamily: "'DM Sans',sans-serif", fontSize: 12,
-                color: "rgba(255,255,255,.22)", textDecoration: "none", transition: "color .2s"
-              }}
-                onMouseEnter={e => { e.currentTarget.style.color = "rgba(255,255,255,.55)" }}
-                onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,.22)" }}>
-                {l}
-              </a>
-            ))}
-          </div>
+          {/*<div style={{ display: "flex", gap: 24 }}>*/}
+          {/*  {["Privacy Policy", "Terms of Use", "Accessibility", "Sitemap", "RTI"].map(l => (*/}
+          {/*    <a key={l} href="#" style={{*/}
+          {/*      fontFamily: "'DM Sans',sans-serif", fontSize: 12,*/}
+          {/*      color: "rgba(255,255,255,.22)", textDecoration: "none", transition: "color .2s"*/}
+          {/*    }}*/}
+          {/*      onMouseEnter={e => { e.currentTarget.style.color = "rgba(255,255,255,.55)" }}*/}
+          {/*      onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,.22)" }}>*/}
+          {/*      {l}*/}
+          {/*    </a>*/}
+          {/*  ))}*/}
+          {/*</div>*/}
         </div>
       </div>
     </footer>
