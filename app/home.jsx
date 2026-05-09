@@ -1343,14 +1343,14 @@ function Footer() {
               title:"Quick Links",
               links:["About RGU","Leadership","Accreditation","Research","Innovation Hub","Placements","Alumni","Contact"]
             },
-            {
-              title:"Schools",
-              links:["Engineering & Tech","Computing & AI","Business & Mgmt","Health Sciences","Liberal Arts","Design & Media","Physiotherapy","Law & Governance"]
-            },
-            {
-              title:"Admissions",
-              links:["UG Programs","PG Programs","Ph.D Programs","Lateral Entry","International Students","Scholarships","Fee Structure","Enquiry Form"]
-            },
+            // {
+            //   title:"Schools",
+            //   links:["Engineering & Tech","Computing & AI","Business & Mgmt","Health Sciences","Liberal Arts","Design & Media","Physiotherapy","Law & Governance"]
+            // },
+            // {
+            //   title:"Admissions",
+            //   links:["UG Programs","PG Programs","Ph.D Programs","Lateral Entry","International Students","Scholarships","Fee Structure","Enquiry Form"]
+            // },
             {
               title:"Contact",
               links:null,
@@ -1362,9 +1362,7 @@ function Footer() {
               {col.contact ? (
                 <div style={{ fontSize:"13px", lineHeight:2 }}>
                   <p>📍 Eachanari, Coimbatore<br/>Tamil Nadu – 641 021</p>
-                  <p style={{ marginTop:"12px" }}>📞 <a href="tel:+914222345678" style={{ color:"#93c5fd", textDecoration:"none" }}>+91-422-234-5678</a></p>
-                  <p>✉ <a href="mailto:admissions@rgu.edu.in" style={{ color:"#93c5fd", textDecoration:"none" }}>admissions@rgu.edu.in</a></p>
-                  <p>🌐 <a href="https://www.rgu.edu.in" style={{ color:"#93c5fd", textDecoration:"none" }}>www.rgu.edu.in</a></p>
+                  <p style={{ marginTop:"12px" }}>📞 <a href="tel:+918448448909" style={{ color:"#93c5fd", textDecoration:"none" }}>+91-844-844-8909</a></p>
                 </div>
               ) : (
                 col.links.map(link => (

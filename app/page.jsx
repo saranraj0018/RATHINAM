@@ -2259,17 +2259,17 @@ function FooterSection() {
                 }}>{c.val}</span>
               </div>
             ))}
-            <Link href="/landing"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 6, padding: "10px 18px", borderRadius: 10,
-                background: "rgba(168,85,247,.12)", border: "1px solid rgba(168,85,247,.25)",
-                color: "#c084fc", fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: 13,
-                textDecoration: "none", transition: "all .3s", marginTop: 8
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = "rgba(168,85,247,.2)" }}
-              onMouseLeave={e => { e.currentTarget.style.background = "rgba(168,85,247,.12)" }}>
-              Visit RGU Way Page →
-            </Link>
+            {/*<Link href="/landing"*/}
+            {/*  style={{*/}
+            {/*    display: "inline-flex", alignItems: "center", gap: 6, padding: "10px 18px", borderRadius: 10,*/}
+            {/*    background: "rgba(168,85,247,.12)", border: "1px solid rgba(168,85,247,.25)",*/}
+            {/*    color: "#c084fc", fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: 13,*/}
+            {/*    textDecoration: "none", transition: "all .3s", marginTop: 8*/}
+            {/*  }}*/}
+            {/*  onMouseEnter={e => { e.currentTarget.style.background = "rgba(168,85,247,.2)" }}*/}
+            {/*  onMouseLeave={e => { e.currentTarget.style.background = "rgba(168,85,247,.12)" }}>*/}
+            {/*  Visit RGU Way Page →*/}
+            {/*</Link>*/}
           </div>
         </div>
 
