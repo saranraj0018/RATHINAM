@@ -180,7 +180,8 @@ function HeroSection() {
       }} />
 
       {/* ── TOP BAR ── */}
-      <div className="absolute top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-4 md:px-9 md:py-5">
+      {/* <div className="absolute top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-4 md:px-9 md:py-5"> */}
+      <div className="z-40 flex items-center justify-between px-4 py-4 md:px-9 md:py-5 opacity-[0.3]">
 
         {/* Logo */}
         <div className="mt-4 md:mt-6 ml-2 md:ml-[8vw] bg-white/95 rounded-xl px-4 py-2 md:px-6 md:py-2.5 flex items-center shadow-[0_6px_24px_rgba(0,0,0,0.35)] backdrop-blur-md">
@@ -188,7 +189,7 @@ function HeroSection() {
         </div>
 
         {/* Admission Enquiry button */}
-        <a href="#enquiry"
+        <a href="https://admissions.rathinamcollege.edu.in/"
           style={{
             display: "inline-flex", alignItems: "center", gap: 8, padding: "11px 24px", borderRadius: 12,
             background: "linear-gradient(135deg,#a855f7,#6d28d9)", color: "#fff", fontFamily: "'Sora',sans-serif",
@@ -240,10 +241,10 @@ function HeroSection() {
                 ADMISSION
               </span>
               <span style={{
-                display: "block", fontSize: "clamp(3.1rem,7.5vw,6.4rem)", color: "#fff",
+                display: "block", fontSize: "clamp(3.1rem,7.5vw,3.4rem)", color: "#fff",
                 letterSpacing: "-.04em", textShadow: "0 0 80px rgba(168,85,247,.65),0 0 160px rgba(168,85,247,.25)"
               }}>
-                OPEN 2026
+                ADMISSION OPEN 2026
               </span>
             </div>
 
@@ -315,7 +316,7 @@ function HeroSection() {
 
         {/* Apply button — bottom left */}
         <div style={{ opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(16px)", transition: "all .6s ease .55s" }}>
-          <a href="#apply"
+          <a href="https://admissions.rathinamcollege.edu.in/"
             style={{
               display: "inline-flex", alignItems: "center", gap: 10, padding: "15px 36px", borderRadius: 16,
               background: "linear-gradient(90deg,#a3e635,#34d399)", color: "#0a0a14",
@@ -981,7 +982,7 @@ function CoursesSection() {
                 <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(15,23,42,.7)" }}>
                   Interested in joining {activeData.short}?
                 </span>
-                <a href="#apply"
+                <a href="https://admissions.rathinamcollege.edu.in/"
                   style={{
                     display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 28px",
                     borderRadius: 14, background: `linear-gradient(135deg, ${activeData.color}cc, ${activeData.color})`,
@@ -1279,7 +1280,7 @@ function HappeningSplitPanel({ visible, eventTypes }) {
 
         {/* CTA */}
         <div>
-          <button style={{
+          {/* <button style={{
             display: "inline-flex", alignItems: "center", gap: 10,
             padding: "14px 28px", borderRadius: 14,
             background: ev.color, color: "#fff", border: "none",
@@ -1295,7 +1296,7 @@ function HappeningSplitPanel({ visible, eventTypes }) {
               stroke="#fff" strokeWidth="2.5" strokeLinecap="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
@@ -1690,20 +1691,20 @@ function LifeSection() {
 ═══════════════════════════════════════════════════════════════════ */
 const projects = [
   {
-    icon: "heart", award: "SIH 2026 Winner", title: "HealthAI – Diagnostics Platform", school: "School of Computing & AI", color: "#a855f7",
-    desc: "AI-powered early disease detection deployed in 12 rural clinics across Tamil Nadu."
+    icon: "lightbulb", award: "Innovation Hub", title: "Strong Startup & Innovation Ecosystem", school: "All Schools", color: "#a855f7",
+    desc: "20+ Centers of Excellence, startup incubation support, hackathons, and innovation programs encourage entrepreneurial thinking."
   },
   {
-    icon: "zap", award: "ISRO Research Grant", title: "GreenGrid – Micro Renewable System", school: "School of Engineering & Technology", color: "#38bdf8",
-    desc: "Portable solar-wind hybrid powering remote villages without grid connectivity."
+    icon: "users", award: "98% Placement Rate", title: "Outstanding Placement Opportunities", school: "Career Services", color: "#38bdf8",
+    desc: "150+ companies, high placement records, internships, and career-focused training help students become industry-ready professionals."
   },
   {
-    icon: "trending", award: "Best Startup 2026", title: "FinMind – Fintech Analytics", school: "School of Business & Management", color: "#a3e635",
-    desc: "ML-based personal finance optimizer recognised by the Reserve Bank Innovation Hub."
+    icon: "building", award: "Industry Partnership", title: "Industry-Integrated Campus", school: "Corporate Relations", color: "#a3e635",
+    desc: "Rathinam’s industry-linked campus with IT Park and SEZ exposure helps students gain practical corporate experience during academics."
   },
   {
-    icon: "activity", award: "National Innovation Award", title: "CureMove – Physio Wearable", school: "Physiotherapy", color: "#f472b6",
-    desc: "Smart wearable guiding physiotherapy exercises with real-time AI motion tracking."
+    icon: "award", award: "NAAC A++", title: "National Recognition & Rankings", school: "Accreditation Office", color: "#f472b6",
+    desc: "Recognized with NAAC A++ accreditation, 4-Star IIC Rating, and NIRF Innovation Band recognition for academic and innovation excellence."
   },
 ];
 
@@ -1747,14 +1748,14 @@ function SpotlightSection() {
               </span>
             </h2>
           </div>
-          <a href="#" style={{
+          {/* <a href="#" style={{
             fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: 14,
             color: "rgba(255,255,255,.5)", textDecoration: "none",
             border: "1px solid rgba(255,255,255,.12)", padding: "10px 20px", borderRadius: 10, transition: "all .3s"
           }}
             onMouseEnter={e => { e.currentTarget.style.color = "#fff" }} onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,.5)" }}>
             View All Research Projects →
-          </a>
+          </a> */}
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}>
@@ -1805,10 +1806,10 @@ function SpotlightSection() {
                   fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: "rgba(255,255,255,.35)",
                   fontWeight: 600
                 }}>{p.school}</span>
-                <span style={{
+                {/* <span style={{
                   marginLeft: "auto", fontSize: 12, fontFamily: "'Sora',sans-serif",
                   fontWeight: 700, color: p.color
-                }}>Learn More →</span>
+                }}>Learn More →</span> */}
               </div>
             </div>
           ))}
@@ -2169,7 +2170,7 @@ function CTABanner() {
             Applications for the 2026–27 academic year are open. Secure your place at RGU before seats fill up.
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="#apply"
+            <a href="https://admissions.rathinamcollege.edu.in/"
               style={{
                 display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 28px", borderRadius: 12,
                 background: "linear-gradient(90deg,#a3e635,#34d399)", color: "#0a0a14",
@@ -2180,7 +2181,7 @@ function CTABanner() {
               onMouseLeave={e => { e.currentTarget.style.transform = "none" }}>
               Apply Online Now →
             </a>
-            <a href="tel:+914222345678"
+            <a href="tel:844 844 8909"
               style={{
                 display: "inline-flex", alignItems: "center", gap: 6, padding: "12px 20px", borderRadius: 12,
                 border: "1.5px solid rgba(255,255,255,.2)", color: "rgba(255,255,255,.8)",
@@ -2229,17 +2230,17 @@ function FooterSection() {
               fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(255,255,255,.35)",
               lineHeight: 1.8, marginBottom: 20
             }}>
-              Rathinam Global University — a leading deemed university in Coimbatore shaping future-ready graduates since 1997.
+              Rathinam Global University — a leading deemed university in Coimbatore shaping future-ready graduates.
             </p>
-            <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
+            <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>         
               {[
-                { key: "twitter", label: "X / Twitter" },
-                { key: "linkedin", label: "LinkedIn" },
-                { key: "facebook", label: "Facebook" },
-                { key: "youtube", label: "YouTube" },
-                { key: "instagram", label: "Instagram" },
+                { key: "twitter", label: "X / Twitter",url:"https://twitter.com/rathinamgroups" },
+                { key: "linkedin", label: "LinkedIn",url:"https://www.linkedin.com/company/rathinam-group-of-institutions/" },
+                { key: "facebook", label: "Facebook",url:"https://www.facebook.com/rathinamcollege/" },
+                { key: "youtube", label: "YouTube",url:"https://www.youtube.com/@RathinamCollege" },
+                { key: "instagram", label: "Instagram",url:"https://www.instagram.com/rathinam_college/" },
               ].map(s => (
-                <a key={s.key} href="#" aria-label={s.label}
+                <a key={s.key} href={s.url} aria-label={s.label}
                   style={{
                     width: 36, height: 36, borderRadius: 10, display: "flex", alignItems: "center",
                     justifyContent: "center", background: "rgba(255,255,255,.05)",
@@ -2377,7 +2378,7 @@ function FooterSection() {
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: "rgba(255,255,255,.22)" }}>
             © 2026 Rathinam Global University. All rights reserved. Deemed to be University u/s 3 of UGC Act, 1956.
           </p>
-          <div style={{ display: "flex", gap: 24 }}>
+          {/* <div style={{ display: "flex", gap: 24 }}>
             {["Privacy Policy", "Terms of Use", "Accessibility", "Sitemap", "RTI"].map(l => (
               <a key={l} href="#" style={{
                 fontFamily: "'DM Sans',sans-serif", fontSize: 12,
@@ -2388,7 +2389,7 @@ function FooterSection() {
                 {l}
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
