@@ -1964,156 +1964,409 @@ function RecognitionSection() {
   const [ref, vis] = useVisible(0.05);
 
   return (
-    <section ref={ref} id="recognition" style={{
-      background: "#000000",
-      position: "relative", overflow: "hidden", width: "100%", height: "100vh"
-    }}>
+    <section
+      ref={ref}
+      id="recognition"
+      style={{
+        background: "#000000",
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        height: "100vh",
+      }}
+    >
       {/* Background stars / grid */}
-      <div style={{
-        position: "absolute", inset: 0, pointerEvents: "none", opacity: .1,
-        backgroundImage: "linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px)",
-        backgroundSize: "60px 60px", zIndex: 1
-      }} />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          opacity: 0.1,
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px)",
+          backgroundSize: "60px 60px",
+          zIndex: 1,
+        }}
+      />
 
       {/* The Earth Image - Now positioned absolutely at the bottom to fill height correctly */}
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 5 }}>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 5,
+        }}
+      >
         <img
           src="/earth-half.png"
           alt="Earth Globe Background"
           style={{
-            width: "100%", height: "100%", display: "block",
-            objectFit: "cover", objectPosition: "bottom center",
-            opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(120px)",
-            transition: "all 1.5s cubic-bezier(0.16, 1, 0.3, 1)"
+            width: "100%",
+            height: "100%",
+            display: "block",
+            objectFit: "cover",
+            objectPosition: "bottom center",
+            opacity: vis ? 1 : 0,
+            transform: vis ? "translateY(0)" : "translateY(120px)",
+            transition: "all 1.5s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
-          onError={e => {
+          onError={(e) => {
             e.currentTarget.style.display = "none";
             e.currentTarget.nextSibling.style.display = "block";
           }}
         />
-        <div style={{
-          display: "none", margin: "0 auto", width: "100%", paddingBottom: "50%",
-          background: "radial-gradient(ellipse at bottom, #2563eb, transparent 70%)",
-          borderTopLeftRadius: "50% 100%", borderTopRightRadius: "50% 100%", opacity: 0.3
-        }} />
+        <div
+          style={{
+            display: "none",
+            margin: "0 auto",
+            width: "100%",
+            paddingBottom: "50%",
+            background:
+              "radial-gradient(ellipse at bottom, #2563eb, transparent 70%)",
+            borderTopLeftRadius: "50% 100%",
+            borderTopRightRadius: "50% 100%",
+            opacity: 0.3,
+          }}
+        />
       </div>
 
       {/* ── 3 Circle Nav Bubbles — Mobile: Horizontal over Earth | Desktop: Vertical Left ── */}
       <div className="absolute flex flex-row lg:flex-col items-center gap-4 lg:gap-[18px] bottom-[12%] sm:bottom-24 lg:bottom-auto lg:top-1/2 left-0 right-0 lg:right-auto lg:left-[36px] justify-center lg:justify-start z-20 lg:-translate-y-1/2">
-        <a href="#ranking" title="Ranking and Excellence" className="shrink-0" style={{
-          width: 76, height: 76, minWidth: 76, minHeight: 76, maxWidth: 76, maxHeight: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "center", textDecoration: "none", overflow: "hidden",
-          background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
-          backdropFilter: "blur(12px)", cursor: "pointer",
-          animation: "navFloat 4s ease-in-out infinite", transition: "all .4s"
-        }}
-          onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
-          onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}>
+        <a
+          href="#ranking"
+          title="Ranking and Excellence"
+          className="shrink-0"
+          style={{
+            width: 76,
+            height: 76,
+            minWidth: 76,
+            minHeight: 76,
+            maxWidth: 76,
+            maxHeight: 76,
+            flexShrink: 0,
+            borderRadius: "50%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textDecoration: "none",
+            overflow: "hidden",
+            background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(255,255,255,0.25)",
+            backdropFilter: "blur(12px)",
+            cursor: "pointer",
+            animation: "navFloat 4s ease-in-out infinite",
+            transition: "all .4s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.18)";
+            e.currentTarget.style.transform = "scale(1.08)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
           <Icon name="award" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
-          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>Ranking &<br />Excellence</span>
+          <span
+            style={{
+              fontFamily: "'DM Sans',sans-serif",
+              fontSize: 8,
+              fontWeight: 700,
+              color: "rgba(255,255,255,0.85)",
+              letterSpacing: ".1em",
+              textTransform: "uppercase",
+              textAlign: "center",
+              marginTop: 4,
+              lineHeight: 1.1,
+            }}
+          >
+            Ranking &<br />
+            Excellence
+          </span>
         </a>
 
-        <a href="/landing" title="RGU Way" className="shrink-0" style={{
-          width: 76, height: 76, minWidth: 76, minHeight: 76, maxWidth: 76, maxHeight: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "center", textDecoration: "none", overflow: "hidden",
-          background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
-          backdropFilter: "blur(12px)", cursor: "pointer",
-          animation: "navFloat 4s ease-in-out infinite 1.2s", transition: "all .4s"
-        }}
-          onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
-          onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}>
+        <a
+          href="/landing"
+          title="RGU Way"
+          className="shrink-0"
+          style={{
+            width: 76,
+            height: 76,
+            minWidth: 76,
+            minHeight: 76,
+            maxWidth: 76,
+            maxHeight: 76,
+            flexShrink: 0,
+            borderRadius: "50%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textDecoration: "none",
+            overflow: "hidden",
+            background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(255,255,255,0.25)",
+            backdropFilter: "blur(12px)",
+            cursor: "pointer",
+            animation: "navFloat 4s ease-in-out infinite 1.2s",
+            transition: "all .4s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.18)";
+            e.currentTarget.style.transform = "scale(1.08)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
           <Icon name="zap" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
-          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>RGU<br />Way</span>
+          <span
+            style={{
+              fontFamily: "'DM Sans',sans-serif",
+              fontSize: 8,
+              fontWeight: 700,
+              color: "rgba(255,255,255,0.85)",
+              letterSpacing: ".1em",
+              textTransform: "uppercase",
+              textAlign: "center",
+              marginTop: 4,
+              lineHeight: 1.1,
+            }}
+          >
+            RGU
+            <br />
+            Way
+          </span>
         </a>
 
-        <a href="#programs" title="Admissions Open" className="shrink-0" style={{
-          width: 76, height: 76, minWidth: 76, minHeight: 76, maxWidth: 76, maxHeight: 76, flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "center", textDecoration: "none", overflow: "hidden",
-          background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.25)",
-          backdropFilter: "blur(12px)", cursor: "pointer",
-          animation: "navFloat 4s ease-in-out infinite 2.4s", transition: "all .4s"
-        }}
-          onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
-          onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}>
+        <a
+          href="#programs"
+          title="Admissions Open"
+          className="shrink-0"
+          style={{
+            width: 76,
+            height: 76,
+            minWidth: 76,
+            minHeight: 76,
+            maxWidth: 76,
+            maxHeight: 76,
+            flexShrink: 0,
+            borderRadius: "50%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textDecoration: "none",
+            overflow: "hidden",
+            background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(255,255,255,0.25)",
+            backdropFilter: "blur(12px)",
+            cursor: "pointer",
+            animation: "navFloat 4s ease-in-out infinite 2.4s",
+            transition: "all .4s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.18)";
+            e.currentTarget.style.transform = "scale(1.08)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
           <Icon name="send" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
-          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>Admissions<br />Open</span>
+          <span
+            style={{
+              fontFamily: "'DM Sans',sans-serif",
+              fontSize: 8,
+              fontWeight: 700,
+              color: "rgba(255,255,255,0.85)",
+              letterSpacing: ".1em",
+              textTransform: "uppercase",
+              textAlign: "center",
+              marginTop: 4,
+              lineHeight: 1.1,
+            }}
+          >
+            Admissions
+            <br />
+            Open
+          </span>
         </a>
       </div>
 
       {/* Header removed as requested */}
 
-
       {/* Animated Satellite Nodes Mapping - Grid layout on Mobile, Scattered Flex on Desktop */}
-      <div className="absolute top-16 sm:top-24 md:top-auto md:bottom-20 lg:bottom-[16%] left-0 right-0 grid grid-cols-2 md:grid-cols-4 lg:flex lg:justify-evenly items-start lg:items-end px-6 sm:px-10 lg:px-5 z-10 w-full gap-y-8 lg:gap-0">
+      <div className="relative w-full max-w-[1240px] mt-[30px] mx-auto grid grid-cols-2 md:grid-cols-4 lg:flex lg:justify-center items-start lg:items-end px-6 sm:px-10 lg:px-5 z-10 gap-y-8 lg:gap-10 text-center overflow-visible">
         {recognitions.map((item, i) => (
-          <div key={i} className="rec-node relative flex flex-col items-center w-full lg:w-[140px]"
-            style={{ transform: `translateY(${item.offset}px)` }}>
-            {/* Node Card - Infographic Style */}
-            <div style={{
-              textAlign: "center", marginBottom: 12,
-              opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(24px)",
-              transition: `all .8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.1 + 0.4}s`
-            }}>
-              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.6)", fontWeight: 700, letterSpacing: ".15em", textTransform: "uppercase", marginBottom: 6 }}>
+          <div
+            key={i}
+            className="rec-node relative flex flex-col items-center w-full lg:w-[140px] min-w-0"
+            style={{ marginTop: `${item.offset}px` }}
+          >
+            <div
+              style={{
+                textAlign: "center",
+                marginBottom: 12,
+                opacity: vis ? 1 : 0,
+                transform: vis ? "translateY(0)" : "translateY(24px)",
+                transition: `all .8s cubic-bezier(0.16, 1, 0.3, 1) ${
+                  i * 0.1 + 0.4
+                }s`,
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "'DM Sans',sans-serif",
+                  fontSize: 11,
+                  color: "rgba(255,255,255,0.6)",
+                  fontWeight: 700,
+                  letterSpacing: ".15em",
+                  textTransform: "uppercase",
+                  marginBottom: 6,
+                }}
+              >
                 {item.topText}
               </div>
-              <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 900, fontSize: "clamp(22px, 3.5vw, 32px)", color: "#ffffff", lineHeight: 1, letterSpacing: "-.03em", textShadow: `0 0 24px ${item.color}80` }}>
+
+              <div
+                style={{
+                  fontFamily: "'Sora',sans-serif",
+                  fontWeight: 900,
+                  fontSize: "clamp(22px, 3.5vw, 32px)",
+                  color: "#ffffff",
+                  lineHeight: 1,
+                  letterSpacing: "-.03em",
+                  textShadow: `0 0 24px ${item.color}80`,
+                }}
+              >
                 {item.highlight}
               </div>
-              <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.85)", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginTop: 8 }}>
+
+              <div
+                style={{
+                  fontFamily: "'DM Sans',sans-serif",
+                  fontSize: 11,
+                  color: "rgba(255,255,255,0.85)",
+                  fontWeight: 700,
+                  letterSpacing: ".1em",
+                  textTransform: "uppercase",
+                  marginTop: 8,
+                }}
+              >
                 {item.bottomText}
               </div>
             </div>
 
-            {/* Animated Vertical Line track - Hidden on mobile so stacking grid looks neat */}
-            <div className="hidden lg:block" style={{
-              width: 3.5, height: item.height, background: `linear-gradient(to top, transparent, ${item.color}40, transparent)`,
-              position: "relative", overflow: "hidden", opacity: vis ? 1 : 0,
-              transition: `opacity 1s ease 1s`
-            }}>
-              <div className="energy-pulse" style={{ backgroundColor: item.color, animationDelay: `${i * 0.3}s` }} />
+            <div
+              className="hidden lg:block"
+              style={{
+                width: 3.5,
+                height: item.height,
+                background: `linear-gradient(to top, transparent, ${item.color}40, transparent)`,
+                position: "relative",
+                overflow: "hidden",
+                opacity: vis ? 1 : 0,
+                transition: `opacity 1s ease 1s`,
+              }}
+            >
+              <div
+                className="energy-pulse"
+                style={{
+                  backgroundColor: item.color,
+                  animationDelay: `${i * 0.3}s`,
+                }}
+              />
             </div>
           </div>
         ))}
       </div>
 
       {/* Ambient bottom glow */}
-      <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0, height: 100,
-        background: "linear-gradient(to top, rgba(12,12,24,1), transparent)", zIndex: 8
-      }} />
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: 100,
+          background: "linear-gradient(to top, rgba(12,12,24,1), transparent)",
+          zIndex: 8,
+        }}
+      />
 
       {/* Ticker - Moved from HeroSection */}
-      <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 30, overflow: "hidden",
-        borderTop: "1px solid rgba(255,255,255,.07)", background: "rgba(0,0,0,.50)", backdropFilter: "blur(16px)"
-      }}>
-        <div style={{ display: "flex", padding: "10px 0", animation: "ticker 25s linear infinite", whiteSpace: "nowrap" }}>
-          {[...Array(3)].fill([
-            { icon: "cap", text: "25,000+ Students" },
-            { icon: "award", text: "NAAC A++ ACCREDITED" },
-            { icon: "trending", text: "98% Placements" },
-            { icon: "globe", text: "80+ Global Partners" },
-            { icon: "send", text: "Admissions Open 2026" },
-            { icon: "book", text: "120+ Programs" },
-            { icon: "flask", text: "50+ Research Centres" },
-            { icon: "star", text: "NIRF Top 50" },
-          ]).flat().map((item, i) => (
-            <span key={i} style={{
-              fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 700,
-              textTransform: "uppercase", letterSpacing: ".16em", color: "rgba(255,255,255,.40)",
-              marginRight: 48, display: "inline-flex", alignItems: "center", gap: 8
-            }}>
-              <Icon name={item.icon} size={13} color="rgba(163,230,53,.55)" sw={2} />
-              {item.text}<span style={{ color: "rgba(163,230,53,.40)" }}>◆</span>
-            </span>
-          ))}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 30,
+          overflow: "hidden",
+          borderTop: "1px solid rgba(255,255,255,.07)",
+          background: "rgba(0,0,0,.50)",
+          backdropFilter: "blur(16px)",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            padding: "10px 0",
+            animation: "ticker 25s linear infinite",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {[...Array(3)]
+            .fill([
+              { icon: "cap", text: "25,000+ Students" },
+              { icon: "award", text: "NAAC A++ ACCREDITED" },
+              { icon: "trending", text: "98% Placements" },
+              { icon: "globe", text: "80+ Global Partners" },
+              { icon: "send", text: "Admissions Open 2026" },
+              { icon: "book", text: "120+ Programs" },
+              { icon: "flask", text: "50+ Research Centres" },
+              { icon: "star", text: "NIRF Top 50" },
+            ])
+            .flat()
+            .map((item, i) => (
+              <span
+                key={i}
+                style={{
+                  fontFamily: "'DM Sans',sans-serif",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: ".16em",
+                  color: "rgba(255,255,255,.40)",
+                  marginRight: 48,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
+              >
+                <Icon
+                  name={item.icon}
+                  size={13}
+                  color="rgba(163,230,53,.55)"
+                  sw={2}
+                />
+                {item.text}
+                <span style={{ color: "rgba(163,230,53,.40)" }}>◆</span>
+              </span>
+            ))}
         </div>
       </div>
 
       {/* Internal Styles for Keyframes */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes navFloat {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
@@ -2133,7 +2386,9 @@ function RecognitionSection() {
         @media (max-width: 1023px) {
           .rec-node { transform: translateY(0px) !important; }
         }
-      `}} />
+      `,
+        }}
+      />
     </section>
   );
 }
