@@ -27,7 +27,7 @@ export default function HappeningAtRGU() {
   const filtered = active === "All" ? events : events.filter((e) => e.tag === active);
 
   return (
-    <section ref={ref} id="happening" className="relative py-32 overflow-hidden"
+    <section ref={ref} id="happening" className="relative py-16 lg:py-32 overflow-hidden"
       style={{ background: "#080810" }}>
 
       <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none"

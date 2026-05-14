@@ -29,7 +29,7 @@ export default function WhatIsRGUWay() {
   }, []);
 
   return (
-    <section ref={ref} id="rgu-way" className="relative py-32 overflow-hidden"
+    <section ref={ref} id="rgu-way" className="relative py-16 lg:py-32 overflow-hidden"
       style={{ background: "linear-gradient(180deg,#0c0c18 0%,#0f0f1e 100%)" }}>
 
       {/* Background accent blobs */}

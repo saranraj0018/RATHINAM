@@ -27,7 +27,7 @@ export default function SkillPassportBanner() {
   }, []);
 
   return (
-    <section ref={ref} id="skill-passport" className="relative py-28 overflow-hidden"
+    <section ref={ref} id="skill-passport" className="relative py-14 lg:py-28 overflow-hidden"
       style={{ background: "linear-gradient(180deg,#0c0c18 0%,#080810 100%)" }}>
 
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]"

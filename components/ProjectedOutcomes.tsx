@@ -20,7 +20,7 @@ export default function ProjectedOutcomes() {
   }, []);
 
   return (
-    <section ref={ref} id="outcomes" className="relative py-32 overflow-hidden"
+    <section ref={ref} id="outcomes" className="relative py-16 lg:py-32 overflow-hidden"
       style={{ background: "linear-gradient(180deg,#0f0f1e 0%,#080810 100%)" }}>
 
       <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"

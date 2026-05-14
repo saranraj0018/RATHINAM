@@ -19,7 +19,7 @@ export default function WhyMoreThanDegree() {
   }, []);
 
   return (
-    <section ref={ref} id="why" className="relative py-28 overflow-hidden"
+    <section ref={ref} id="why" className="relative py-14 lg:py-28 overflow-hidden"
       style={{ background: "#080810" }}>
 
       <div className="absolute w-[400px] h-[400px] rounded-full pointer-events-none"

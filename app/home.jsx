@@ -120,8 +120,8 @@ const C = {
 ═══════════════════════════════════════════════════════════ */
 const SCHOOLS = [
   {
-    name: "School of Engineering & Technology",
-    short: "Engineering & Tech",
+    name: "School of Engineering & Emerging Technologies",
+    short: "Engineering & Emerging Technologies",
     color: "#1a56db",
     gradient: "linear-gradient(135deg,#1a56db22,#1a56db08)",
     programs: ["B.Tech CSE", "B.Tech Mech", "B.Tech ECE", "M.Tech"],
@@ -139,8 +139,8 @@ const SCHOOLS = [
     ),
   },
   {
-    name: "School of Computing & AI",
-    short: "Computing & AI",
+    name: "School of Quantum Science, Computing & AI",
+    short: "Quantum Science, Computing & AI",
     color: "#7c3aed",
     gradient: "linear-gradient(135deg,#7c3aed22,#7c3aed08)",
     programs: ["B.Sc CS", "M.Sc AI/ML", "B.Tech AI", "Ph.D CS"],
@@ -177,8 +177,8 @@ const SCHOOLS = [
     ),
   },
   {
-    name: "School of Health Sciences",
-    short: "Health Sciences",
+    name: "School of Sports & Health Sciences",
+    short: "Sports & Health Sciences",
     color: "#e11d48",
     gradient: "linear-gradient(135deg,#e11d4822,#e11d4808)",
     programs: ["B.Pharm", "M.Pharm", "B.Sc Nursing", "M.Sc Biotech"],
@@ -207,17 +207,31 @@ const SCHOOLS = [
     ),
   },
   {
-    name: "School of Design, Media & Performing Arts",
-    short: "Design & Media",
+    name: "School of Media & Performing Arts",
+    short: "Media & Performing Arts",
     color: "#db2777",
     gradient: "linear-gradient(135deg,#db277722,#db277708)",
-    programs: ["B.Des UI/UX", "BA Film", "BA Music", "M.Des"],
+    programs: ["B.Sc Visual Communication", "B.A Journalism", "B.A Theatre & Performing Arts", "M.A Journalism"],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:"64px",height:"64px"}}>
         <circle cx="20" cy="20" r="8" fill="#db2777" opacity="0.8"/>
         <circle cx="44" cy="20" r="8" fill="#f59e0b" opacity="0.8"/>
         <circle cx="32" cy="40" r="8" fill="#7c3aed" opacity="0.8"/>
         <path d="M28,20 Q32,32 36,20" stroke="#fff" strokeWidth="1.5" fill="none"/>
+      </svg>
+    ),
+  },
+  {
+    name: "School of Fashion Design",
+    short: "Fashion Design",
+    color: "#f59e0b",
+    gradient: "linear-gradient(135deg,#f59e0b22,#f59e0b08)",
+    programs: ["B.Tech Fashion Technology", "B.Sc Fashion Design", "B.Sc Textile Design", "M.Sc Fashion Design"],
+    icon: (
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:"64px",height:"64px"}}>
+        <path d="M32 10 L42 26 L52 22 L46 44 L18 44 L12 22 L22 26 Z" stroke="#f59e0b" strokeWidth="2.5" fill="none" strokeLinejoin="round"/>
+        <path d="M24 44 L22 54 L42 54 L40 44" stroke="#f59e0b" strokeWidth="2" strokeLinejoin="round"/>
+        <circle cx="32" cy="28" r="5" fill="#f59e0b50" stroke="#f59e0b" strokeWidth="1.5"/>
       </svg>
     ),
   },
@@ -284,6 +298,21 @@ const SCHOOLS = [
         <path d="M32 40 Q20 36 16 20 Q28 18 36 30" fill="#16a34a" opacity="0.7"/>
         <path d="M32 30 Q44 24 48 10 Q36 8 28 22" fill="#16a34a" opacity="0.5"/>
         <line x1="32" y1="52" x2="32" y2="58" stroke="#78350f" strokeWidth="3" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    name: "School of Sustainability & Climate Studies",
+    short: "Sustainability & Climate Studies",
+    color: "#00b894",
+    gradient: "linear-gradient(135deg,#00b89422,#00b89408)",
+    programs: ["B.Sc Environmental Science & Sustainability", "M.Sc Climate Change & Policy"],
+    icon: (
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:"64px",height:"64px"}}>
+        <circle cx="32" cy="32" r="22" stroke="#00b894" strokeWidth="2.5" opacity="0.3"/>
+        <path d="M32 18 Q20 28 24 40 Q32 44 40 38 Q48 28 32 18Z" fill="#00b894" opacity="0.6"/>
+        <path d="M32 44 L32 52" stroke="#00b894" strokeWidth="2.5" strokeLinecap="round"/>
+        <path d="M26 50 Q32 48 38 50" stroke="#00b894" strokeWidth="2" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -975,8 +1004,8 @@ function SpotlightProjects() {
   const [ref, visible] = useVisible(0.1);
 
   const projects = [
-    { title:"HealthAI – Diagnostics Platform", school:"School of Computing & AI", award:"SIH 2026 Winner", desc:"AI-powered early disease detection system deployed in 12 rural clinics across Tamil Nadu.", icon:"🏥", color:"#7c3aed" },
-    { title:"GreenGrid – Micro Renewable System", school:"School of Engineering & Tech", award:"ISRO Research Grant", desc:"Portable, solar-wind hybrid system powering remote villages without grid connectivity.", icon:"⚡", color:"#059669" },
+    { title:"HealthAI – Diagnostics Platform", school:"School of Quantum Science, Computing & AI", award:"SIH 2026 Winner", desc:"AI-powered early disease detection system deployed in 12 rural clinics across Tamil Nadu.", icon:"🏥", color:"#7c3aed" },
+    { title:"GreenGrid – Micro Renewable System", school:"School of Engineering & Emerging Technologies", award:"ISRO Research Grant", desc:"Portable, solar-wind hybrid system powering remote villages without grid connectivity.", icon:"⚡", color:"#059669" },
     { title:"FinMind – Fintech Analytics", school:"School of Business & Management", award:"Best Startup 2026", desc:"ML-based personal finance optimizer recognized by the Reserve Bank Innovation Hub.", icon:"💹", color:"#1a56db" },
     { title:"CureMove – Physio Wearable", school:"Physiotherapy", award:"National Innovation Award", desc:"Smart wearable that guides physiotherapy exercises using real-time motion tracking and AI feedback.", icon:"🦾", color:"#e11d48" },
   ];
