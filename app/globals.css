@@ -362,7 +362,7 @@ body {
 
   /* Font Scaling adjustments */
   h1 span {
-    font-size: min(10vw, 3.5rem) !important;
+    font-size: min(8vw, 3.5rem) !important;
     line-height: 1.1 !important;
   }
   h2 {
