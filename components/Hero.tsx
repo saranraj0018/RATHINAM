@@ -34,10 +34,12 @@ export default function Hero() {
   const [mounted, setMounted]   = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [mouse, setMouse]       = useState({ x: 50, y: 50 });
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setMounted(true);
+    setIsMobile(window.innerWidth < 1024);
     const t = setTimeout(() => setRevealed(true), 400);
     return () => clearTimeout(t);
   }, []);
@@ -88,7 +90,7 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         <video autoPlay muted loop playsInline
           className="absolute w-full h-full object-cover"
-          style={{ transform:`scale(1.10) translate(${pX}%,${pY}%)`, transition:"transform 0.35s ease-out" }}
+          style={{ transform: isMobile ? "scale(1)" : `scale(1.10) translate(${pX}%,${pY}%)`, transition:"transform 0.35s ease-out" }}
         >
           <source src="/bgvideo.mp4" type="video/mp4" />
         </video>
@@ -115,11 +117,11 @@ export default function Hero() {
       }} />
 
       {/* ── MAIN CONTENT ── */}
-      <div className="relative z-30 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-6 pt-28 pb-6">
-        <div className="grid lg:grid-cols-12 gap-10 xl:gap-16 items-center">
+      <div className="relative z-30 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-6 pt-20 lg:pt-28 pb-6">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-16 items-center">
 
           {/* LEFT – headline */}
-          <div className="lg:col-span-7 space-y-7">
+          <div className="lg:col-span-7 space-y-4 lg:space-y-7">
 
             {/* Eyebrow pill */}
             <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-white/[0.14] backdrop-blur-md"
@@ -133,15 +135,15 @@ export default function Hero() {
             {/* H1 */}
             <h1 className="font-outfit font-black leading-[1.1] md:leading-[0.9]"
               style={{ animation: mounted ? "heroFadeUp .7s ease forwards .25s" : undefined, opacity: mounted ? undefined : 0 }}>
-              <span className="block text-[clamp(1.8rem,6.2vw,5.4rem)] mb-1"
+              <span className="block text-[clamp(1.4rem,6.2vw,5.4rem)] mb-0.5 lg:mb-1"
                 style={{ WebkitTextStroke:"1px rgba(255,255,255,.26)", color:"transparent", letterSpacing:"-0.03em" }}>
                 Where Students
               </span>
-              <span className="block text-[clamp(2.2rem,7.8vw,7rem)] text-white"
+              <span className="block text-[clamp(1.75rem,7.8vw,7rem)] text-white"
                 style={{ letterSpacing:"-0.04em", animation:"glowPulse 4s ease-in-out infinite" }}>
                 Transform
               </span>
-              <span className="block text-[clamp(1.8rem,5.8vw,5.2rem)] mt-1"
+              <span className="block text-[clamp(1.4rem,5.8vw,5.2rem)] mt-0.5 lg:mt-1"
                 style={{ background:"linear-gradient(90deg,#a3e635 0%,#34d399 45%,#38bdf8 100%)",
                   WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text", letterSpacing:"-0.03em" }}>
                 Into Leaders.
@@ -149,7 +151,7 @@ export default function Hero() {
             </h1>
 
             {/* Sub */}
-            <p className="text-white/55 text-lg font-inter leading-relaxed max-w-lg"
+            <p className="text-white/55 text-sm lg:text-lg font-inter leading-relaxed max-w-lg"
               style={{ animation: mounted ? "heroFadeUp .7s ease forwards .4s" : undefined, opacity: mounted ? undefined : 0 }}>
               Rathinam Global University's signature model — every semester
               adds <span className="text-white font-semibold">measurable, stacked value</span>.
@@ -160,7 +162,7 @@ export default function Hero() {
             <div className="flex flex-wrap gap-4"
               style={{ animation: mounted ? "heroFadeUp .7s ease forwards .52s" : undefined, opacity: mounted ? undefined : 0 }}>
               <a href="#rgu-way"
-                className="group relative px-8 py-4 rounded-2xl font-outfit font-bold text-base text-white overflow-hidden inline-flex items-center gap-2"
+                className="group relative px-5 py-3 lg:px-8 lg:py-4 rounded-2xl font-outfit font-bold text-sm lg:text-base text-white overflow-hidden inline-flex items-center gap-2"
                 style={{ background:"linear-gradient(135deg,#660066,#8800aa)", boxShadow:"0 8px 32px rgba(102,0,102,.45)" }}>
                 <span className="relative z-10 flex items-center gap-2">
                   Explore the RGU Way
@@ -170,7 +172,7 @@ export default function Hero() {
                   style={{ background:"linear-gradient(135deg,#7a007a,#aa00cc)" }} />
               </a>
               <a href="#apply"
-                className="group px-8 py-4 rounded-2xl font-outfit font-bold text-base border text-white backdrop-blur-md hover:bg-white/10 transition-all duration-300 inline-flex items-center gap-2"
+                className="group px-5 py-3 lg:px-8 lg:py-4 rounded-2xl font-outfit font-bold text-sm lg:text-base border text-white backdrop-blur-md hover:bg-white/10 transition-all duration-300 inline-flex items-center gap-2"
                 style={{ borderColor:"rgba(255,255,255,.22)" }}>
                 Apply Now
                 <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">↗</span>
@@ -196,7 +198,7 @@ export default function Hero() {
           {/* RIGHT – glass card */}
           <div className="lg:col-span-5"
             style={{ animation: mounted ? "heroFadeR .8s ease forwards .5s" : undefined, opacity: mounted ? undefined : 0 }}>
-            <div className="rounded-3xl p-7 xl:p-8 space-y-6"
+            <div className="rounded-3xl p-5 lg:p-7 xl:p-8 space-y-4 lg:space-y-6"
               style={{ background:"rgba(255,255,255,.05)", backdropFilter:"blur(24px)",
                 border:"1px solid rgba(255,255,255,.10)", boxShadow:"0 32px 80px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.09)" }}>
 

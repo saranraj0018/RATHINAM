@@ -31,7 +31,7 @@ export default function LifeAtRGU() {
   }, []);
 
   return (
-    <section ref={ref} id="life" className="relative py-32 overflow-hidden"
+    <section ref={ref} id="life" className="relative py-16 lg:py-32 overflow-hidden"
       style={{ background: "linear-gradient(180deg,#0f0f1e 0%,#0c0c18 100%)" }}>
 
       <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"

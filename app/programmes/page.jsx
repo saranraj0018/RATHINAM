@@ -8,8 +8,8 @@ import Footer from "../../components/Footer";
 /* ─── School data (neon colours matching home page) ─── */
 const schoolsData = [
   {
-    name: "School of Computing, AI & Emerging Technologies",
-    short: "Computing, AI & Emerging Technologies",
+    name: "School of Quantum Science, Computing & AI",
+    short: "Quantum Science, Computing & AI",
     slug: "computing-ai",
     color: "#b800ff", colorHi: "#e040ff",
     programs: [
@@ -20,8 +20,8 @@ const schoolsData = [
     ]
   },
   {
-    name: "School of Engineering & Applied Technologies",
-    short: "Engineering & Applied Technologies",
+    name: "School of Engineering & Emerging Technologies",
+    short: "Engineering & Emerging Technologies",
     slug: "engineering",
     color: "#0099ff", colorHi: "#40d0ff",
     programs: [
@@ -42,8 +42,8 @@ const schoolsData = [
     ]
   },
   {
-    name: "School of Applied Biosciences, Food & Agri-Tech",
-    short: "Applied Biosciences, Food & Agri-Tech",
+    name: "School of Applied Biosciences / Food / Agritech",
+    short: "Applied Biosciences / Food / Agritech",
     slug: "biosciences",
     color: "#00cc7a", colorHi: "#00ffaa",
     programs: [
@@ -64,26 +64,46 @@ const schoolsData = [
     ]
   },
   {
-    name: "School of Design, Media & Performing Arts",
-    short: "Design, Media & Performing Arts",
-    slug: "design-arts",
+    name: "School of Media & Performing Arts",
+    short: "Media & Performing Arts",
+    slug: "media-arts",
     color: "#ff0077", colorHi: "#ff55bb",
     programs: [
-      { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Fashion Technology"] },
-      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Fashion Design", "B.Sc Visual Communication (AI-Ready Animation & VFX Design)", "B.Sc Digital And Cyber Forensics Science"] },
-      { category: "B.A PERFORMING ARTS", level: "UNDERGRADUATE", courses: ["Viscom"] },
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Visual Communication (AI-Ready Animation & VFX Design)"] },
+      { category: "B.A PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.A Journalism & Mass Communication", "B.A Theatre & Performing Arts"] },
       { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.A Journalism and Mass Communication"] }
     ]
   },
   {
-    name: "School of Health Sciences & Rehabilitation",
-    short: "Health Sciences & Rehabilitation",
+    name: "School of Fashion Design",
+    short: "Fashion Design",
+    slug: "fashion-design",
+    color: "#f59e0b", colorHi: "#fbbf24",
+    programs: [
+      { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Fashion Technology"] },
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Fashion Design", "B.Sc Costume Design & Fashion", "B.Sc Textile Design & Merchandising"] },
+      { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Fashion Design & Retail Management"] }
+    ]
+  },
+  {
+    name: "School of Sports & Health Sciences",
+    short: "Sports & Health Sciences",
     slug: "health-sciences",
     color: "#cc00ff", colorHi: "#ee55ff",
     programs: [
       { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Psychology", "B.Sc Behavioural Science"] },
       { category: "BBA PROGRAMMES", level: "UNDERGRADUATE", courses: ["BBA Hospital & Health Service Management"] },
       { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Applied Psychology", "M.Sc Clinical Psychology", "M.Sc Behavioural Science"] }
+    ]
+  },
+  {
+    name: "School of Sustainability & Climate Studies",
+    short: "Sustainability & Climate Studies",
+    slug: "sustainability",
+    color: "#00b894", colorHi: "#00e5b0",
+    programs: [
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Environmental Science & Sustainability"] },
+      { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Climate Change & Policy"] }
     ]
   }
 ];
@@ -179,7 +199,7 @@ function SchoolBanner({ school }) {
             All Programmes
           </div>
           <div style={{ fontSize: 13, color: "rgba(255,255,255,.55)", marginTop: 6, letterSpacing: ".12em", textTransform: "uppercase" }}>
-            9 World-Class Schools · 100+ Programmes
+            {schoolsData.length} World-Class Schools · 100+ Programmes
           </div>
         </div>
       </div>
@@ -334,7 +354,7 @@ function ProgrammesContent() {
               Find Your Future at RGU
             </h1>
             <p style={{ fontSize: 16, color: "#64748b", maxWidth: 520, margin: "0 auto" }}>
-              9 world-class schools · 100+ programmes · Apply for 2026 intake
+              {schoolsData.length} world-class schools · 100+ programmes · Apply for 2026 intake
             </p>
           </div>
         </div>

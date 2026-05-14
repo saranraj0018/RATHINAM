@@ -21,7 +21,7 @@ export default function CoreBrandPromise() {
   }, []);
 
   return (
-    <section ref={ref} id="core-promise" className="relative py-32 overflow-hidden"
+    <section ref={ref} id="core-promise" className="relative py-16 lg:py-32 overflow-hidden"
       style={{ background: "#080810" }}>
 
       {/* Grid texture */}

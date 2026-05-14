@@ -134,6 +134,7 @@ function HeroSection() {
   const pY = ((mouse.y - 50) * -0.016).toFixed(3);
   const cur = heroCarousel[hIdx];
   const stat = statsCarousel[sIdx];
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   return (
     <section id="hero-section" ref={secRef} style={{ position: "relative", height: "100vh", minHeight: 640, overflow: "hidden", background: "#050510" }}>
@@ -211,7 +212,7 @@ function HeroSection() {
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", borderRadius: 100,
           background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.14)", backdropFilter: "blur(12px)",
-          marginBottom: 20,
+          marginBottom: isMobile ? 10 : 20,
           opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(16px)",
           transition: "all .6s ease .15s"
         }}>
@@ -229,19 +230,19 @@ function HeroSection() {
 
         {/* Main heading */}
         <h1 style={{
-          fontFamily: "'Sora',sans-serif", fontWeight: 900, lineHeight: 1.15, marginBottom: 28,
+          fontFamily: "'Sora',sans-serif", fontWeight: 900, lineHeight: 1.1, marginBottom: isMobile ? 10 : 28,
           opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(24px)", transition: "all .7s ease .25s"
         }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr" }}>
             <div style={{ gridRow: 1, gridColumn: 1, opacity: headingIdx === 0 ? 1 : 0, transition: "opacity 1s ease", pointerEvents: headingIdx === 0 ? "auto" : "none" }}>
               <span style={{
-                display: "block", fontSize: "clamp(2.5rem,6vw,5.2rem)", color: "transparent",
+                display: "block", fontSize: "clamp(1.6rem,6vw,5.2rem)", color: "transparent",
                 WebkitTextStroke: "1px rgba(255,255,255,.28)", letterSpacing: "-.03em"
               }}>
                 ADMISSION
               </span>
               <span style={{
-                display: "block", fontSize: "clamp(3.1rem,7.5vw,3.4rem)", color: "#fff",
+                display: "block", fontSize: "clamp(2rem,7.5vw,3.4rem)", color: "#fff",
                 letterSpacing: "-.04em", textShadow: "0 0 80px rgba(168,85,247,.65),0 0 160px rgba(168,85,247,.25)"
               }}>
                 ADMISSION OPEN 2026
@@ -250,13 +251,13 @@ function HeroSection() {
 
             <div style={{ gridRow: 1, gridColumn: 1, opacity: headingIdx === 1 ? 1 : 0, transition: "opacity 1s ease", pointerEvents: headingIdx === 1 ? "auto" : "none" }}>
               <span style={{
-                display: "block", fontSize: "clamp(2.5rem,6vw,5.2rem)", color: "transparent",
+                display: "block", fontSize: "clamp(1.6rem,6vw,5.2rem)", color: "transparent",
                 WebkitTextStroke: "1px rgba(255,255,255,.28)", letterSpacing: "-.03em"
               }}>
                 RGU SAT
               </span>
               <span style={{
-                display: "block", fontSize: "clamp(3.1rem,7.5vw,6.4rem)", color: "#fff",
+                display: "block", fontSize: "clamp(2rem,7.5vw,6.4rem)", color: "#fff",
                 letterSpacing: "-.04em", textShadow: "0 0 80px rgba(168,85,247,.65),0 0 160px rgba(168,85,247,.25)"
               }}>
                 2026
@@ -264,8 +265,8 @@ function HeroSection() {
             </div>
           </div>
           <span style={{
-            display: "block", fontSize: "clamp(1.3rem,2.5vw,1.9rem)", fontWeight: 600,
-            letterSpacing: ".01em", marginTop: 16,
+            display: "block", fontSize: "clamp(0.95rem,2.5vw,1.9rem)", fontWeight: 600,
+            letterSpacing: ".01em", marginTop: isMobile ? 8 : 16,
             background: "linear-gradient(90deg,#a3e635,#34d399,#38bdf8)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
           }}>
@@ -275,9 +276,9 @@ function HeroSection() {
 
         {/* Animated carousel box */}
         <div style={{
-          position: "relative", overflow: "hidden", borderRadius: 16, padding: "18px 24px",
+          position: "relative", overflow: "hidden", borderRadius: 16, padding: isMobile ? "12px 16px" : "18px 24px",
           background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.12)", backdropFilter: "blur(16px)",
-          marginBottom: 28, marginTop: 42, maxWidth: 520,
+          marginBottom: isMobile ? 14 : 28, marginTop: isMobile ? 16 : 42, maxWidth: 520,
           opacity: mounted ? 1 : 0, transition: "opacity .7s ease .4s"
         }}>
           <div style={{
@@ -315,12 +316,13 @@ function HeroSection() {
         </div>
 
         {/* Apply button — bottom left */}
-        <div style={{ opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(16px)", transition: "all .6s ease .55s" }}>
+        <div style={{ opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(16px)", transition: "all .6s ease .55s",
+          display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 10 : 0 }}>
           <a href="https://admissions.rathinamcollege.edu.in/"
             style={{
-              display: "inline-flex", alignItems: "center", gap: 10, padding: "15px 36px", borderRadius: 16,
+              display: "inline-flex", alignItems: "center", gap: 10, padding: isMobile ? "12px 28px" : "15px 36px", borderRadius: 16,
               background: "linear-gradient(90deg,#a3e635,#34d399)", color: "#0a0a14",
-              fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 16, textDecoration: "none",
+              fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: isMobile ? 14 : 16, textDecoration: "none",
               boxShadow: "0 8px 32px rgba(163,230,53,.40)", transition: "all .3s"
             }}
             onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px) scale(1.03)"; e.currentTarget.style.boxShadow = "0 14px 40px rgba(163,230,53,.55)" }}
@@ -332,10 +334,10 @@ function HeroSection() {
           </a>
           <a href="#"
             style={{
-              display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 28px", borderRadius: 16,
+              display: "inline-flex", alignItems: "center", gap: 8, padding: isMobile ? "12px 22px" : "15px 28px", borderRadius: 16,
               background: "transparent", border: "1.5px solid rgba(255,255,255,.22)", color: "rgba(255,255,255,.8)",
-              fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: 15, textDecoration: "none",
-              transition: "all .3s", marginLeft: 12
+              fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: isMobile ? 13 : 15, textDecoration: "none",
+              transition: "all .3s", marginLeft: isMobile ? 0 : 12
             }}
             onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,.08)" }}
             onMouseLeave={e => { e.currentTarget.style.background = "transparent" }}>
@@ -429,7 +431,7 @@ function HeroSection() {
 ═══════════════════════════════════════════════════════════════════ */
 const schoolsConfig = [
   {
-    name: "School of Computing, AI & Emerging Technologies", short: "Computing & AI", color: "#8e00c4", colorHi: "#b810d6",
+    name: "School of Quantum Science, Computing & AI", short: "Quantum Science, Computing & AI", color: "#8e00c4", colorHi: "#b810d6",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="20" rx="4" stroke={c} strokeWidth="1.5" /><circle cx="24" cy="24" r="5" stroke={c} strokeWidth="1.5" /><circle cx="24" cy="24" r="2" fill={c} /><path d="M19 24h-8M37 24h-8" stroke={c} strokeWidth="1.5" strokeLinecap="round" /><path d="M24 19v-6M24 35v-6" stroke={c} strokeWidth="1.5" strokeLinecap="round" /><circle cx="11" cy="24" r="2" fill={c} opacity=".6" /><circle cx="37" cy="24" r="2" fill={c} opacity=".6" /></svg>),
     programs: [
       // { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Computer Science and Engineering", "B.Tech Information Technology", "B.Tech Artificial Intelligence and Data Science", "B.Tech Artificial Intelligence and Machine Learning", "B.Tech CSE — Specialization in Data Science", "B.Tech CSE — Specialization in Cyber Security", "B.Tech CSE — Specialization in Cloud Computing", "B.Tech CSE — Specialization in Gaming Technology", "B.Tech CSE — Specialization in Full Stack Development", "B.Tech Mathematics and Computing", "B.Tech CSE — Specialization in Quantum Computing"] },
@@ -439,7 +441,7 @@ const schoolsConfig = [
     ]
   },
   {
-    name: "School of Engineering & Applied Technologies", short: "Engineering & Applied Tech", color: "#0073cc", colorHi: "#1a9ee6",
+    name: "School of Engineering & Emerging Technologies", short: "Engineering & Emerging Technologies", color: "#0073cc", colorHi: "#1a9ee6",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill={c + "18"} stroke={c} strokeWidth="1.5" strokeDasharray="4 3" /><path d="M16 32l8-16 8 16" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><circle cx="24" cy="16" r="3" fill={c} /><path d="M12 36h24" stroke={c} strokeWidth="1.5" strokeLinecap="round" /><rect x="20" y="26" width="8" height="6" rx="1" stroke={c} strokeWidth="1.5" /></svg>),
     programs: [
       { category: "UNDERGRADUATE PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.E Computer Science Engineering", "B.E CSE Artificial Intelligence and Machine Learning",  "B.E CSE Cyber Security", "B.E CSE Regional Language", "B.E ECE", "B.E Mech", "B.E Mechatronics" , "B.Tech AIDS" , "B.Tech BioTechnology" , "B.Tech Information Technology" ] }
@@ -457,7 +459,7 @@ const schoolsConfig = [
     ]
   },
   {
-    name: "School of Applied Biosciences, Food & Agri-Tech", short: "Biosciences & Agri-Tech", color: "#00995c", colorHi: "#00cc88",
+    name: "School of Applied Biosciences / Food / Agritech", short: "Applied Biosciences / Food / Agritech", color: "#00995c", colorHi: "#00cc88",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 36V22" stroke={c} strokeWidth="2" strokeLinecap="round" /><path d="M24 22c0-8-10-10-10-10s0 10 10 10z" stroke={c} strokeWidth="1.5" strokeLinejoin="round" fill={c + "20"} /><path d="M24 26c0-6 10-8 10-8s0 8-10 8z" stroke={c} strokeWidth="1.5" strokeLinejoin="round" fill={c + "20"} /><path d="M12 36h24" stroke={c} strokeWidth="1.5" strokeLinecap="round" /></svg>),
     programs: [
       { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech BioTechnology"] },
@@ -475,22 +477,38 @@ const schoolsConfig = [
     ]
   },
   {
-    name: "School of Design, Media & Performing Arts", short: "Design, Media & Arts", color: "#cc005f", colorHi: "#e62b9a",
+    name: "School of Media & Performing Arts", short: "Media & Performing Arts", color: "#cc005f", colorHi: "#e62b9a",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke={c} strokeWidth="1.5" /><circle cx="24" cy="18" r="4" stroke={c} strokeWidth="1.5" /><path d="M16 34c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke={c} strokeWidth="1.5" strokeLinecap="round" /><path d="M32 14l4-4M16 14l-4-4" stroke={c} strokeWidth="1.5" strokeLinecap="round" /></svg>),
     programs: [
-      // { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Fashion Technology"] },
-      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Fashion Design", "B.Sc Visual Communication (AI-Ready Animation & VFX Design)", "B.Sc Digital And Cyber Forensics Science"] },
-      { category: "B.A PERFORMING ARTS", level: "UNDERGRADUATE", courses: ["English Literature"] },
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Visual Communication (AI-Ready Animation & VFX Design)"] },
+      { category: "B.A PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.A Journalism & Mass Communication", "B.A Theatre & Performing Arts"] },
       { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.A Journalism and Mass Communication"] }
     ]
   },
   {
-    name: "School of Health Sciences & Rehabilitation", short: "Health Sciences", color: "#9900cc", colorHi: "#cc22e6",
+    name: "School of Fashion Design", short: "Fashion Design", color: "#f59e0b", colorHi: "#fbbf24",
+    svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 8 L32 20 L40 16 L36 32 L12 32 L8 16 L16 20 Z" stroke={c} strokeWidth="1.5" fill="none" strokeLinejoin="round"/><path d="M18 32 L16 40 L32 40 L30 32" stroke={c} strokeWidth="1.5" strokeLinejoin="round"/><circle cx="24" cy="20" r="3" fill={c + "50"} stroke={c} strokeWidth="1"/></svg>),
+    programs: [
+      { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Fashion Technology"] },
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Fashion Design", "B.Sc Costume Design & Fashion", "B.Sc Textile Design & Merchandising"] },
+      { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Fashion Design & Retail Management"] }
+    ]
+  },
+  {
+    name: "School of Sports & Health Sciences", short: "Sports & Health Sciences", color: "#9900cc", colorHi: "#cc22e6",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke={c} strokeWidth="1.5" /><path d="M24 16v16M16 24h16" stroke={c} strokeWidth="2.5" strokeLinecap="round" /><circle cx="24" cy="24" r="5" fill={c + "30"} /></svg>),
     programs: [
       { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Psychology", "B.Sc MicroBiology with GIP"] },
       // { category: "BBA PROGRAMMES", level: "UNDERGRADUATE", courses: ["BBA Hospital & Health Service Management"] },
       { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Applied Psychology", "M.Sc Clinical Psychology" ] }
+    ]
+  },
+  {
+    name: "School of Sustainability & Climate Studies", short: "Sustainability & Climate Studies", color: "#00b894", colorHi: "#00e5b0",
+    svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke={c} strokeWidth="1.5" /><path d="M24 14c-5.5 3-8 8-5 13s9 7 13 4" stroke={c} strokeWidth="2" strokeLinecap="round" /><path d="M24 34v-4M20 30h8" stroke={c} strokeWidth="2" strokeLinecap="round" /></svg>),
+    programs: [
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Environmental Science & Sustainability"] },
+      { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Climate Change & Policy"] }
     ]
   }
 ];
@@ -638,8 +656,8 @@ function CoursesSection() {
               <div className={floatClass(i)}
                 style={{ animationDelay: `${i * 0.22}s`, transition: "opacity .4s", opacity: dim ? 0.22 : 1, position: "relative", ...extraStyle }}>
 
-                {/* Scattered Top Courses */}
-                {!dim && topCourses.map((c, idx) => {
+                {/* Scattered Top Courses — limited to 3, always visible */}
+                {!dim && topCourses.slice(0, 3).map((c, idx) => {
                   const pos = scatterPositions[idx];
                   if (!pos) return null;
                   const bRot = [3, -4.5, 2.8, -3.2, 4][idx % 5];
@@ -677,9 +695,9 @@ function CoursesSection() {
                   onClick={() => !dim && setActiveSchool(isActive ? null : sc.name)}
                   style={{
                     display: "flex", flexDirection: "column", alignItems: "center", gap: 13,
-                    padding: "26px 16px 20px", borderRadius: 28,
+                    padding: "26px 18px 20px", borderRadius: 28,
                     cursor: dim ? "default" : "pointer", outline: "none",
-                    minHeight: 200, zIndex: 10, width: "100%", maxWidth: 260,
+                    minHeight: 200, zIndex: 10, width: 230, minWidth: 230, maxWidth: 230,
                     background: `linear-gradient(135deg, ${sc.color} 0%, ${sc.colorHi || sc.color} 100%)`,
                     border: `1px solid rgba(255,255,255,0.4)`,
                     boxShadow: isActive
@@ -817,27 +835,36 @@ function CoursesSection() {
           return (
             <div style={{ opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(30px)", transition: "all .8s ease .3s" }}>
 
-              {/* ── DESKTOP SCATTER LAYOUT ── */}
+              {/* ── DESKTOP: 5 above | search | 4 below ── */}
               <div className="hidden lg:block">
-                {/* ── ROW 1 — top 3 bubbles ── */}
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: 140, marginBottom: 70 }}>
-                  <Bubble sc={schoolsConfig[0]} i={0} extraStyle={{ transform: "translateY(30px) translateX(-60px)" }} />
-                  <Bubble sc={schoolsConfig[1]} i={1} extraStyle={{ transform: "translateY(-50px)" }} />
-                  <Bubble sc={schoolsConfig[2]} i={2} extraStyle={{ transform: "translateY(40px) translateX(60px)" }} />
+
+                {/* Top row — 5 schools with gentle arc */}
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: 16, marginBottom: 36 }}>
+                  {schoolsConfig.slice(0, 5).map((sc, i) => {
+                    const yOffset = [18, -8, -28, -8, 18][i];
+                    return (
+                      <Bubble key={sc.name} sc={sc} i={i}
+                        extraStyle={{ transform: `translateY(${yOffset}px)` }} />
+                    );
+                  })}
                 </div>
 
-                {/* ── ROW 2 — bubble | SEARCH BAR | bubble ── */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 140, marginBottom: 70, position: "relative", zIndex: 11 }}>
-                  <Bubble sc={schoolsConfig[3]} i={3} extraStyle={{ transform: "translateX(-60px) translateY(12px)" }} />
-                  {SearchBar}
-                  <Bubble sc={schoolsConfig[4]} i={4} extraStyle={{ transform: "translateX(60px) translateY(-12px)" }} />
+                {/* Search bar — centered */}
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: 36, position: "relative", zIndex: 11 }}>
+                  <div style={{ width: 500 }}>{SearchBar}</div>
                 </div>
 
-                {/* ── ROW 3 — bottom 2 bubbles ── */}
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 220, marginBottom: 40 }}>
-                  <Bubble sc={schoolsConfig[5]} i={5} extraStyle={{ transform: "translateY(55px) translateX(-60px)" }} />
-                  <Bubble sc={schoolsConfig[6]} i={6} extraStyle={{ transform: "translateY(38px) translateX(60px)" }} />
+                {/* Bottom row — 4 schools with gentle arc */}
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 16 }}>
+                  {schoolsConfig.slice(5, 9).map((sc, i) => {
+                    const yOffset = [-18, 8, 8, -18][i];
+                    return (
+                      <Bubble key={sc.name} sc={sc} i={i + 5}
+                        extraStyle={{ transform: `translateY(${yOffset}px)` }} />
+                    );
+                  })}
                 </div>
+
               </div>
 
               {/* ── MOBILE STACKED LAYOUT ── */}
@@ -949,14 +976,14 @@ function CoursesSection() {
                         const getCourseApplicationLink = (schoolName, courseName) => {
                           const linkMap = {
                             "School of Liberal Arts & Science": "https://admissions.rathinamcollege.edu.in/arts",
-                            "School of Engineering & Applied Technologies": "https://admissions.rathinamcollege.edu.in/engineering",
+                            "School of Engineering & Emerging Technologies": "https://admissions.rathinamcollege.edu.in/engineering",
                             "School of Business & Commerce": "https://admissions.rathinamcollege.edu.in/mba-application-forms",
-                            "School of Health Sciences & Rehabilitation": "https://admissions.rathinamcollege.edu.in/bpt-physiotherapy",
-                            "School of Computing, AI & Emerging Technologies": "https://admissions.rathinamcollege.edu.in/engineering",
-                            "School of Design, Media & Performing Arts": "https://admissions.rathinamcollege.edu.in/arts",
+                            "School of Sports & Health Sciences": "https://admissions.rathinamcollege.edu.in/bpt-physiotherapy",
+                            "School of Quantum Science, Computing & AI": "https://admissions.rathinamcollege.edu.in/engineering",
+                            "School of Media & Performing Arts": "https://admissions.rathinamcollege.edu.in/arts",
                           };
                           // Special handling for Biosciences: B.Tech → engineering, B.Sc/M.Sc → arts
-                          if (schoolName === "School of Applied Biosciences, Food & Agri-Tech") {
+                          if (schoolName === "School of Applied Biosciences / Food / Agritech") {
                             return courseName.startsWith("B.Tech") ? "https://admissions.rathinamcollege.edu.in/engineering" : "https://admissions.rathinamcollege.edu.in/arts";
                           }
                           return linkMap[schoolName] || "https://admissions.rathinamcollege.edu.in/";
@@ -1004,9 +1031,9 @@ function CoursesSection() {
                   const getApplicationLink = (schoolName) => {
                     const linkMap = {
                       "School of Liberal Arts & Science": "https://admissions.rathinamcollege.edu.in/arts",
-                      "School of Engineering & Applied Technologies": "https://admissions.rathinamcollege.edu.in/engineering",
+                      "School of Engineering & Emerging Technologies": "https://admissions.rathinamcollege.edu.in/engineering",
                       "School of Business & Commerce": "https://admissions.rathinamcollege.edu.in/mba-application-forms",
-                      "School of Health Sciences & Rehabilitation": "https://admissions.rathinamcollege.edu.in/bpt-physiotherapy"
+                      "School of Sports & Health Sciences": "https://admissions.rathinamcollege.edu.in/bpt-physiotherapy"
                     };
                     return linkMap[schoolName] || "https://admissions.rathinamcollege.edu.in/";
                   };
@@ -2006,6 +2033,13 @@ const recognitions = [
 
 function RecognitionSection() {
   const [ref, vis] = useVisible(0.05);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
     <section
@@ -2016,7 +2050,7 @@ function RecognitionSection() {
         position: "relative",
         overflow: "hidden",
         width: "100%",
-        height: "clamp(100vh, 126vh, 126vh)",
+        height: isMobile ? "100vh" : "100vh",
       }}
     >
       {/* Background stars / grid */}
@@ -2033,13 +2067,11 @@ function RecognitionSection() {
         }}
       />
 
-      {/* The Earth Image - Now positioned absolutely at the bottom to fill height correctly */}
+      {/* The Earth Image - inset:0 fills the full section on all screen sizes */}
       <div
         style={{
           position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
+          inset: 0,
           zIndex: 5,
         }}
       >
@@ -2051,7 +2083,7 @@ function RecognitionSection() {
             height: "100%",
             display: "block",
             objectFit: "cover",
-            objectPosition: "bottom center",
+            objectPosition: isMobile ? "44% 80%" : "bottom center",
             opacity: vis ? 1 : 0,
             transform: vis ? "translateY(0)" : "translateY(120px)",
             transition: "all 1.5s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -2074,173 +2106,6 @@ function RecognitionSection() {
             opacity: 0.3,
           }}
         />
-      </div>
-
-      {/* ── 3 Circle Nav Bubbles — Mobile: Horizontal over Earth | Desktop: Vertical Left ── */}
-      <div className="absolute flex flex-row lg:flex-col items-center gap-4 lg:gap-[18px] bottom-[12%] sm:bottom-24 lg:bottom-auto lg:top-1/2 left-0 right-0 lg:right-auto lg:left-[36px] justify-center lg:justify-start z-20 lg:-translate-y-1/2">
-        <a
-          href="#ranking"
-          title="Ranking and Excellence"
-          className="shrink-0"
-          style={{
-            width: 76,
-            height: 76,
-            minWidth: 76,
-            minHeight: 76,
-            maxWidth: 76,
-            maxHeight: 76,
-            flexShrink: 0,
-            borderRadius: "50%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textDecoration: "none",
-            overflow: "hidden",
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.25)",
-            backdropFilter: "blur(12px)",
-            cursor: "pointer",
-            animation: "navFloat 4s ease-in-out infinite",
-            transition: "all .4s",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "rgba(255,255,255,0.18)";
-            e.currentTarget.style.transform = "scale(1.08)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-            e.currentTarget.style.transform = "scale(1)";
-          }}
-        >
-          <Icon name="award" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
-          <span
-            style={{
-              fontFamily: "'DM Sans',sans-serif",
-              fontSize: 8,
-              fontWeight: 700,
-              color: "rgba(255,255,255,0.85)",
-              letterSpacing: ".1em",
-              textTransform: "uppercase",
-              textAlign: "center",
-              marginTop: 4,
-              lineHeight: 1.1,
-            }}
-          >
-            Ranking &<br />
-            Excellence
-          </span>
-        </a>
-
-        <a
-          href="#"
-          title="RGU Way"
-          className="shrink-0"
-          style={{
-            width: 76,
-            height: 76,
-            minWidth: 76,
-            minHeight: 76,
-            maxWidth: 76,
-            maxHeight: 76,
-            flexShrink: 0,
-            borderRadius: "50%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textDecoration: "none",
-            overflow: "hidden",
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.25)",
-            backdropFilter: "blur(12px)",
-            cursor: "pointer",
-            animation: "navFloat 4s ease-in-out infinite 1.2s",
-            transition: "all .4s",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "rgba(255,255,255,0.18)";
-            e.currentTarget.style.transform = "scale(1.08)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-            e.currentTarget.style.transform = "scale(1)";
-          }}
-        >
-          <Icon name="zap" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
-          <span
-            style={{
-              fontFamily: "'DM Sans',sans-serif",
-              fontSize: 8,
-              fontWeight: 700,
-              color: "rgba(255,255,255,0.85)",
-              letterSpacing: ".1em",
-              textTransform: "uppercase",
-              textAlign: "center",
-              marginTop: 4,
-              lineHeight: 1.1,
-            }}
-          >
-            RGU
-            <br />
-            Way
-          </span>
-        </a>
-
-        <a
-          href="#programs"
-          title="Admissions Open"
-          className="shrink-0"
-          style={{
-            width: 76,
-            height: 76,
-            minWidth: 76,
-            minHeight: 76,
-            maxWidth: 76,
-            maxHeight: 76,
-            flexShrink: 0,
-            borderRadius: "50%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textDecoration: "none",
-            overflow: "hidden",
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.25)",
-            backdropFilter: "blur(12px)",
-            cursor: "pointer",
-            animation: "navFloat 4s ease-in-out infinite 2.4s",
-            transition: "all .4s",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "rgba(255,255,255,0.18)";
-            e.currentTarget.style.transform = "scale(1.08)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-            e.currentTarget.style.transform = "scale(1)";
-          }}
-        >
-          <Icon name="send" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
-          <span
-            style={{
-              fontFamily: "'DM Sans',sans-serif",
-              fontSize: 8,
-              fontWeight: 700,
-              color: "rgba(255,255,255,0.85)",
-              letterSpacing: ".1em",
-              textTransform: "uppercase",
-              textAlign: "center",
-              marginTop: 4,
-              lineHeight: 1.1,
-            }}
-          >
-            Admissions
-            <br />
-            Open
-          </span>
-        </a>
       </div>
 
       {/* Header removed as requested */}
@@ -2498,6 +2363,72 @@ function RecognitionSection() {
               </span>
             ))}
         </div>
+      </div>
+
+      {/* ── 3 Circle Nav Bubbles — below stats on mobile, vertical left on desktop ── */}
+      <div className="relative lg:absolute flex flex-row lg:flex-col items-center gap-4 lg:gap-[18px] mt-8 lg:mt-0 lg:bottom-auto lg:top-1/2 left-0 right-0 lg:right-auto lg:left-[36px] justify-center lg:justify-start z-20 lg:-translate-y-1/2">
+        <a
+          href="#ranking"
+          title="Ranking and Excellence"
+          className="shrink-0"
+          style={{
+            width: 76, height: 76, minWidth: 76, minHeight: 76, maxWidth: 76, maxHeight: 76,
+            flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
+            alignItems: "center", justifyContent: "center", textDecoration: "none",
+            overflow: "hidden", background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(255,255,255,0.25)", backdropFilter: "blur(12px)",
+            cursor: "pointer", animation: "navFloat 4s ease-in-out infinite", transition: "all .4s",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}
+        >
+          <Icon name="award" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>
+            Ranking &<br />Excellence
+          </span>
+        </a>
+
+        <a
+          href="#"
+          title="RGU Way"
+          className="shrink-0"
+          style={{
+            width: 76, height: 76, minWidth: 76, minHeight: 76, maxWidth: 76, maxHeight: 76,
+            flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
+            alignItems: "center", justifyContent: "center", textDecoration: "none",
+            overflow: "hidden", background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(255,255,255,0.25)", backdropFilter: "blur(12px)",
+            cursor: "pointer", animation: "navFloat 4s ease-in-out infinite 1.2s", transition: "all .4s",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}
+        >
+          <Icon name="zap" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>
+            RGU<br />Way
+          </span>
+        </a>
+
+        <a
+          href="#programs"
+          title="Admissions Open"
+          className="shrink-0"
+          style={{
+            width: 76, height: 76, minWidth: 76, minHeight: 76, maxWidth: 76, maxHeight: 76,
+            flexShrink: 0, borderRadius: "50%", display: "flex", flexDirection: "column",
+            alignItems: "center", justifyContent: "center", textDecoration: "none",
+            overflow: "hidden", background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(255,255,255,0.25)", backdropFilter: "blur(12px)",
+            cursor: "pointer", animation: "navFloat 4s ease-in-out infinite 2.4s", transition: "all .4s",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.18)"; e.currentTarget.style.transform = "scale(1.08)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.transform = "scale(1)"; }}
+        >
+          <Icon name="send" size={22} color="rgba(255,255,255,0.9)" sw={1.5} />
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: ".1em", textTransform: "uppercase", textAlign: "center", marginTop: 4, lineHeight: 1.1 }}>
+            Admissions<br />Open
+          </span>
+        </a>
       </div>
 
       {/* Internal Styles for Keyframes */}
