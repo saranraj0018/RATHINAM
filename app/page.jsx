@@ -531,7 +531,7 @@ function CoursesSection() {
   const floatClass = (i) => ["bubbleF0", "bubbleF1", "bubbleF2", "bubbleF3"][i % 4];
 
   return (
-    <section ref={ref} id="programs" style={{ background: "#ffffff", padding: "100px 0 120px", position: "relative", overflow: "hidden" }}>
+    <section ref={ref} id="programs" style={{ background: "#ffffff", padding: "clamp(30px, 6vw, 100px) 0 clamp(30px, 7vw, 120px)", position: "relative", overflow: "hidden" }}>
 
       {/* ── Dynamic Floating Background Mesh ── */}
       <style dangerouslySetInnerHTML={{
@@ -572,7 +572,7 @@ function CoursesSection() {
         }} />
       </div>
 
-      <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 32px", position: "relative", zIndex: 10 }}>
+      <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 clamp(10px, 4vw, 32px)", position: "relative", zIndex: 10 }}>
 
         {/* ── Section header ── */}
         <div style={{
@@ -680,7 +680,7 @@ function CoursesSection() {
                     display: "flex", flexDirection: "column", alignItems: "center", gap: 13,
                     padding: "26px 16px 20px", borderRadius: 28,
                     cursor: dim ? "default" : "pointer", outline: "none",
-                    minHeight: 200, zIndex: 10,
+                    minHeight: 200, zIndex: 10, width: "100%", maxWidth: 260,
                     background: `linear-gradient(135deg, ${sc.color} 0%, ${sc.colorHi || sc.color} 100%)`,
                     border: `1px solid rgba(255,255,255,0.4)`,
                     boxShadow: isActive
@@ -690,7 +690,7 @@ function CoursesSection() {
                     transform: isActive ? "scale(1.06)" : "scale(1)",
                     position: "relative", overflow: "hidden",
                   }}
-                  className="schoolCardBtn w-[155px] sm:w-[176px]"
+                  className="schoolCardBtn"
                   onMouseEnter={e => { if (!isActive && !dim) { e.currentTarget.style.transform = "scale(1.05)"; e.currentTarget.style.boxShadow = `0 20px 48px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.08), inset 0 2px 4px rgba(255,255,255,0.6)`; } }}
                   onMouseLeave={e => { if (!isActive && !dim) { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = `0 10px 24px rgba(0,0,0,0.06), inset 0 2px 4px rgba(255,255,255,0.4)`; } }}>
 
@@ -842,7 +842,7 @@ function CoursesSection() {
               </div>
 
               {/* ── MOBILE STACKED LAYOUT ── */}
-              <div className="flex lg:hidden flex-col gap-10 mt-6 md:mt-10 px-4">
+              <div className="flex lg:hidden flex-col gap-10 mt-6 md:mt-10 px-2 md:px-4">
                 {SearchBar}
                 <div className="grid grid-cols-2 place-items-center gap-4 sm:gap-6 mt-4">
                   {schoolsConfig.map((sc, index) => (
@@ -945,30 +945,49 @@ function CoursesSection() {
 
                     {/* Course list */}
                     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      {prog.courses.map((course, cIdx) => (
-                        <Link href={`/programmes?course=${encodeURIComponent(course)}`} key={cIdx}
-                          style={{
-                            display: "flex", alignItems: "flex-start", gap: 10,
-                            padding: "12px 14px", borderRadius: 10,
-                            background: "#f8fafc", textDecoration: "none",
-                            border: "1px solid rgba(0,0,0,.05)",
-                            transition: "all .22s", cursor: "pointer"
-                          }}
-                          onMouseEnter={e => { e.currentTarget.style.background = `${activeData.color}0d`; e.currentTarget.style.borderColor = `${activeData.color}28`; e.currentTarget.style.transform = "translateX(4px)"; }}
-                          onMouseLeave={e => { e.currentTarget.style.background = "#f8fafc"; e.currentTarget.style.borderColor = "rgba(0,0,0,.05)"; e.currentTarget.style.transform = "translateX(0)"; }}>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={activeData.color}
-                            strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                            style={{ flexShrink: 0, marginTop: 2, opacity: .75 }}>
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                          </svg>
-                          <span style={{
-                            fontFamily: "'Sora',sans-serif", fontSize: 13.5, fontWeight: 500,
-                            color: "rgba(15,23,42,.85)", lineHeight: 1.4
-                          }}>
-                            {course}
-                          </span>
-                        </Link>
-                      ))}
+                      {prog.courses.map((course, cIdx) => {
+                        // Determine the application link based on school and course
+                        const getCourseApplicationLink = (schoolName, courseName) => {
+                          const linkMap = {
+                            "School of Liberal Arts & Science": "https://admissions.rathinamcollege.edu.in/arts",
+                            "School of Engineering & Applied Technologies": "https://admissions.rathinamcollege.edu.in/engineering",
+                            "School of Business & Commerce": "https://admissions.rathinamcollege.edu.in/mba-application-forms",
+                            "School of Health Sciences & Rehabilitation": "https://admissions.rathinamcollege.edu.in/bpt-physiotherapy",
+                            "School of Computing, AI & Emerging Technologies": "https://admissions.rathinamcollege.edu.in/engineering",
+                            "School of Design, Media & Performing Arts": "https://admissions.rathinamcollege.edu.in/arts",
+                          };
+                          // Special handling for Biosciences: B.Tech → engineering, B.Sc/M.Sc → arts
+                          if (schoolName === "School of Applied Biosciences, Food & Agri-Tech") {
+                            return courseName.startsWith("B.Tech") ? "https://admissions.rathinamcollege.edu.in/engineering" : "https://admissions.rathinamcollege.edu.in/arts";
+                          }
+                          return linkMap[schoolName] || "https://admissions.rathinamcollege.edu.in/";
+                        };
+                        const courseLink = getCourseApplicationLink(activeData.name, course);
+                        return (
+                          <a href={courseLink} key={cIdx}
+                            style={{
+                              display: "flex", alignItems: "flex-start", gap: 10,
+                              padding: "12px 14px", borderRadius: 10,
+                              background: "#f8fafc", textDecoration: "none",
+                              border: "1px solid rgba(0,0,0,.05)",
+                              transition: "all .22s", cursor: "pointer"
+                            }}
+                            onMouseEnter={e => { e.currentTarget.style.background = `${activeData.color}0d`; e.currentTarget.style.borderColor = `${activeData.color}28`; e.currentTarget.style.transform = "translateX(4px)"; }}
+                            onMouseLeave={e => { e.currentTarget.style.background = "#f8fafc"; e.currentTarget.style.borderColor = "rgba(0,0,0,.05)"; e.currentTarget.style.transform = "translateX(0)"; }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={activeData.color}
+                              strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                              style={{ flexShrink: 0, marginTop: 2, opacity: .75 }}>
+                              <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                            <span style={{
+                              fontFamily: "'Sora',sans-serif", fontSize: 13.5, fontWeight: 500,
+                              color: "rgba(15,23,42,.85)", lineHeight: 1.4
+                            }}>
+                              {course}
+                            </span>
+                          </a>
+                        );
+                      })}
                     </div>
                   </div>
                 ))}
@@ -982,17 +1001,42 @@ function CoursesSection() {
                 <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(15,23,42,.7)" }}>
                   Interested in joining {activeData.short}?
                 </span>
-                <a href="https://admissions.rathinamcollege.edu.in/"
+                {(() => {
+                  const getApplicationLink = (schoolName) => {
+                    const linkMap = {
+                      "School of Liberal Arts & Science": "https://admissions.rathinamcollege.edu.in/arts",
+                      "School of Engineering & Applied Technologies": "https://admissions.rathinamcollege.edu.in/engineering",
+                      "School of Business & Commerce": "https://admissions.rathinamcollege.edu.in/mba-application-forms",
+                      "School of Health Sciences & Rehabilitation": "https://admissions.rathinamcollege.edu.in/bpt-physiotherapy"
+                    };
+                    return linkMap[schoolName] || "https://admissions.rathinamcollege.edu.in/";
+                  };
+                  const appLink = getApplicationLink(activeData.name);
+                  return (
+                    <a href={appLink}
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 28px",
+                        borderRadius: 14, background: `linear-gradient(135deg, ${activeData.color}cc, ${activeData.color})`,
+                        color: "#000", fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: 14,
+                        textDecoration: "none", boxShadow: `0 8px 24px ${activeData.color}40`, transition: "all .3s"
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 14px 32px ${activeData.color}55`; }}
+                      onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = `0 8px 24px ${activeData.color}40`; }}>
+                      Apply Now
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    </a>
+                  );
+                })()}
+                <a href="https://admissions.rathinamcollege.edu.in/international-admissions"
                   style={{
-                    display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 28px",
-                    borderRadius: 14, background: `linear-gradient(135deg, ${activeData.color}cc, ${activeData.color})`,
-                    color: "#000", fontFamily: "'Sora',sans-serif", fontWeight: 700, fontSize: 14,
-                    textDecoration: "none", boxShadow: `0 8px 24px ${activeData.color}40`, transition: "all .3s"
+                    display: "inline-flex", alignItems: "center", gap: 8, padding: "11px 22px",
+                    borderRadius: 14, background: "rgba(0,0,0,.06)", border: "1.5px solid rgba(0,0,0,.12)",
+                    color: "rgba(15,23,42,.75)", fontFamily: "'Sora',sans-serif", fontWeight: 600, fontSize: 13,
+                    textDecoration: "none", transition: "all .3s"
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 14px 32px ${activeData.color}55`; }}
-                  onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = `0 8px 24px ${activeData.color}40`; }}>
-                  Apply Now
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,0,0,.12)"; e.currentTarget.style.color = "rgba(15,23,42,.95)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "rgba(0,0,0,.06)"; e.currentTarget.style.color = "rgba(15,23,42,.75)"; }}>
+                  International Form
                 </a>
               </div>
             </div>
@@ -1043,7 +1087,7 @@ function RGUWaySection() {
   }, []);
 
   return (
-    <section ref={ref} id="rgu-way" style={{ background: "#080810", padding: "100px 0", position: "relative", overflow: "hidden" }}>
+    <section ref={ref} id="rgu-way" style={{ background: "#080810", padding: "50px 15px", position: "relative", overflow: "hidden" }}>
 
       {/* Radial accent */}
       <div style={{
@@ -1053,8 +1097,8 @@ function RGUWaySection() {
         transition: "background 1s ease"
       }} />
 
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+      <div className="section-inner" style={{ maxWidth: 1280, margin: "0 auto" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
           {/* Left text */}
           <div style={{ opacity: vis ? 1 : 0, transform: vis ? "translateX(0)" : "translateX(-32px)", transition: "all 1s ease" }}>
@@ -1101,10 +1145,8 @@ function RGUWaySection() {
           </div>
 
           {/* Right — animated pillar cards */}
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14,
-            opacity: vis ? 1 : 0, transform: vis ? "translateX(0)" : "translateX(32px)", transition: "all 1s ease .2s"
-          }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-14"
+            style={{ opacity: vis ? 1 : 0, transform: vis ? "translateX(0)" : "translateX(32px)", transition: "all 1s ease .2s" }}>
             {pillars.map((p, i) => (
               <div key={p.title} onClick={() => setActive(i)}
                 style={{
@@ -1158,16 +1200,16 @@ function HappeningSplitPanel({ visible, eventTypes }) {
   const ev = eventTypes[active];
 
   return (
-    <div style={{
-      display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0,
-      borderRadius: 28, overflow: "hidden",
-      boxShadow: "0 32px 80px rgba(15,23,42,0.10)",
-      border: "1px solid rgba(15,23,42,0.07)",
-      opacity: visible ? 1 : 0,
-      transform: visible ? "translateY(0)" : "translateY(40px)",
-      transition: "all 0.9s cubic-bezier(0.2,0.8,0.2,1)",
-      marginTop: 56
-    }}>
+<div className="grid grid-cols-1 lg:grid-cols-2"
+        style={{
+          borderRadius: 28, overflow: "hidden",
+          boxShadow: "0 32px 80px rgba(15,23,42,0.10)",
+          border: "1px solid rgba(15,23,42,0.07)",
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(40px)",
+          transition: "all 0.9s cubic-bezier(0.2,0.8,0.2,1)",
+          marginTop: 56
+        }}>
 
       {/* LEFT — Navigator */}
       <div style={{ background: "#f8fafc", borderRight: "1px solid rgba(15,23,42,0.07)" }}>
@@ -1222,8 +1264,8 @@ function HappeningSplitPanel({ visible, eventTypes }) {
       </div>
 
       {/* RIGHT — Detail Panel */}
-      <div style={{
-        background: "#ffffff", padding: "52px 48px",
+      <div className="p-6 sm:p-10" style={{
+        background: "#ffffff",
         display: "flex", flexDirection: "column", justifyContent: "center", gap: 28,
         position: "relative", overflow: "hidden"
       }}>
@@ -1476,7 +1518,7 @@ function HappeningSection() {
         backgroundSize: "28px 28px"
       }} />
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", position: "relative", zIndex: 10 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(10px, 4vw, 32px)", position: "relative", zIndex: 10 }}>
 
         {/* ── Section Header ── */}
         <div style={{
@@ -1531,19 +1573,22 @@ function HappeningSection() {
               {/* Actual latest video IDs fetched from @RathinamCollege */}
               {["izya9OIsDGk", "d_Q-_dRdxaY", "niMsbCsmV5g", "SPC74ZVd9OA", "HxUJA3_hoto",
                 "izya9OIsDGk", "d_Q-_dRdxaY", "niMsbCsmV5g", "SPC74ZVd9OA", "HxUJA3_hoto"].map((id, i) => (
-                  <div key={i} style={{
-                    width: 440, height: 248, flexShrink: 0, borderRadius: 16, overflow: "hidden",
-                    background: "#f8fafc", border: "1px solid rgba(15,23,42,0.06)", boxShadow: "0 8px 24px rgba(0,0,0,0.04)"
-                  }}>
+                  <a key={i} href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener noreferrer"
+                    style={{
+                      width: 440, height: 248, flexShrink: 0, borderRadius: 16, overflow: "hidden",
+                      background: "#f8fafc", border: "1px solid rgba(15,23,42,0.06)", boxShadow: "0 8px 24px rgba(0,0,0,0.04)",
+                      display: "block", textDecoration: "none", transition: "all 0.3s ease"
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.02)"; e.currentTarget.style.boxShadow = "0 12px 32px rgba(0,0,0,0.08)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.04)"; }}>
                     <iframe
                       width="100%" height="100%"
-                      src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&controls=0`}
+                      src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&controls=1`}
                       title="YouTube video player" frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      style={{ pointerEvents: "none" }} // Prevents iframe from capturing scroll events or pauses on hover
                     />
-                  </div>
+                  </a>
                 ))}
             </div>
           </div>
@@ -1590,9 +1635,9 @@ function LifeSection() {
   const [ref, vis] = useVisible(0.08);
   return (
     <section ref={ref} id="life" style={{ background: "linear-gradient(180deg,#080810,#0c0c18)", padding: "100px 0", position: "relative" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(10px, 4vw, 32px)" }}>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center", marginBottom: 64 }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16">
           <div style={{ opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(24px)", transition: "all .8s ease" }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 18px", borderRadius: 100,
@@ -1691,7 +1736,7 @@ function LifeSection() {
 ═══════════════════════════════════════════════════════════════════ */
 const projects = [
   {
-    icon: "lightbulb", award: "Innovation Hub", title: "Strong Startup & Innovation Ecosystem", school: "All Schools", color: "#a855f7",
+    icon: "lightbulb", award: "Innovation Hub", title: "Strong Startup & Innovation Ecosystem", school: "Multi-Disciplinary Learning", color: "#a855f7",
     desc: "20+ Centers of Excellence, startup incubation support, hackathons, and innovation programs encourage entrepreneurial thinking."
   },
   {
@@ -1703,7 +1748,7 @@ const projects = [
     desc: "Rathinam’s industry-linked campus with IT Park and SEZ exposure helps students gain practical corporate experience during academics."
   },
   {
-    icon: "award", award: "NAAC A++", title: "National Recognition & Rankings", school: "Accreditation Office", color: "#f472b6",
+    icon: "award", award: "NAAC A++", title: "National Recognition & Rankings", school: "Accreditation Excellence", color: "#f472b6",
     desc: "Recognized with NAAC A++ accreditation, 4-Star IIC Rating, and NIRF Innovation Band recognition for academic and innovation excellence."
   },
 ];
@@ -1717,7 +1762,7 @@ function SpotlightSection() {
         width: 600, height: 600, borderRadius: "50%", pointerEvents: "none",
         background: "radial-gradient(circle,rgba(168,85,247,.06) 0%,transparent 70%)"
       }} />
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(10px, 4vw, 32px)" }}>
 
         <div style={{
           display: "flex", alignItems: "flex-end", justifyContent: "space-between",
@@ -1758,7 +1803,7 @@ function SpotlightSection() {
           </a> */}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6" style={{ gap: 20 }}>
           {projects.map((p, i) => (
             <div key={p.title}
               style={{
@@ -1791,7 +1836,7 @@ function SpotlightSection() {
                     {p.award}
                   </span>
                   <h4 style={{
-                    fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 26,
+                    fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: "clamp(14px, 3vw, 26px)",
                     color: "#f8fafc", lineHeight: 1.4
                   }}>{p.title}</h4>
                 </div>
@@ -1825,7 +1870,7 @@ function SpotlightSection() {
 function ChairmanSection() {
   const [ref, vis] = useVisible(0.12);
   return (
-    <section ref={ref} id="chairman" style={{ background: "#ffffff", padding: "120px 0 100px", position: "relative" }}>
+    <section ref={ref} id="chairman" style={{ background: "#ffffff", padding: "clamp(50px, 8vw, 120px) 0 clamp(50px, 7vw, 100px)", position: "relative" }}>
       {/* Large faded RGU watermark */}
       <div style={{
         position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
@@ -1834,7 +1879,7 @@ function ChairmanSection() {
       }}>
         RGU
       </div>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px", position: "relative", zIndex: 10 }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(10px, 4vw, 32px)", position: "relative", zIndex: 10 }}>
 
         <div style={{
           textAlign: "center", marginBottom: 80,
@@ -1863,7 +1908,7 @@ function ChairmanSection() {
         </div>
 
         {/* 2-Column Layout: Image left, full message right */}
-        <div style={{ display: "grid", gridTemplateColumns: "420px 1fr", gap: 72, alignItems: "start" }}>
+        <div className="grid grid-cols-1 xl:grid-cols-[420px_1fr] items-start" style={{ gap: "clamp(0px, 5vw, 72px)" }}>
 
           {/* Left Block — Image + Name */}
           <div style={{ opacity: vis ? 1 : 0, transform: vis ? "translateX(0)" : "translateX(-32px)", transition: "all 1s ease .15s", display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
@@ -1950,14 +1995,14 @@ function ChairmanSection() {
    8. RECOGNITION — EARTH GLOBE LAYOUT
 ═══════════════════════════════════════════════════════════════════ */
 const recognitions = [
-  { topText: "QS I-Gauge", highlight: "PLATINUM", bottomText: "RANK", color: "#a855f7", offset: 0, height: 500 },
-  { topText: "NAAC", highlight: "A++", bottomText: "ACCREDITED", color: "#38bdf8", offset: -40, height: 260 },
-  { topText: "NIRF Ranking", highlight: "9TH", bottomText: "YEAR IN A ROW", color: "#a3e635", offset: -80, height: 480 },
-  { topText: "NIRF Innovation", highlight: "TOP 50", bottomText: "IN INDIA", color: "#f472b6", offset: -100, height: 300 },
-  { topText: "Global Network", highlight: "100+", bottomText: "GLOBAL PARTNERS", color: "#6366f1", offset: -120, height: 360 },
-  { topText: "Global Reach", highlight: "1000+", bottomText: "INTERNATIONAL STUDENTS", color: "#fb923c", offset: -80, height: 480 },
-  { topText: "INDIA'S", highlight: "FIRST", bottomText: "INDUSTRY INTEGRATED INSTITUTE", color: "#34d399", offset: -40, height: 260 },
-  { topText: "In-Campus", highlight: "ATAL", bottomText: "INCUBATION CENTRE", color: "#fbbf24", offset: 0, height: 500 },
+  { topText: "QS I-Gauge", highlight: "PLATINUM", bottomText: "RANK", color: "#a855f7", height: 500, desktopPos: { left: "12%", top: "14%" } },
+  { topText: "NAAC", highlight: "A++", bottomText: "ACCREDITED", color: "#38bdf8", height: 260, desktopPos: { left: "24%", top: "42%" } },
+  { topText: "NIRF Ranking", highlight: "9TH", bottomText: "YEAR IN A ROW", color: "#a3e635", height: 480, desktopPos: { left: "36%", top: "12%" } },
+  { topText: "NIRF Innovation", highlight: "TOP 50", bottomText: "IN INDIA", color: "#f472b6", height: 300, desktopPos: { left: "46%", top: "44%" } },
+  { topText: "Global Network", highlight: "100+", bottomText: "GLOBAL PARTNERS", color: "#6366f1", height: 360, desktopPos: { left: "58%", top: "18%" } },
+  { topText: "Global Reach", highlight: "1000+", bottomText: "INTERNATIONAL STUDENTS", color: "#fb923c", height: 480, desktopPos: { left: "95%", top: "10%" } },
+  { topText: "INDIA'S", highlight: "FIRST", bottomText: "INDUSTRY INTEGRATED INSTITUTE", color: "#34d399", height: 260, desktopPos: { left: "74%", top: "50%" } },
+  { topText: "In-Campus", highlight: "ATAL", bottomText: "INCUBATION CENTRE", color: "#fbbf24", height: 500, desktopPos: { right: "12%", top: "24%" } },
 ];
 
 function RecognitionSection() {
@@ -1972,7 +2017,7 @@ function RecognitionSection() {
         position: "relative",
         overflow: "hidden",
         width: "100%",
-        height: "100vh",
+        height: "clamp(100vh, 126vh, 126vh)",
       }}
     >
       {/* Background stars / grid */}
@@ -2201,90 +2246,183 @@ function RecognitionSection() {
 
       {/* Header removed as requested */}
 
-      {/* Animated Satellite Nodes Mapping - Grid layout on Mobile, Scattered Flex on Desktop */}
-      <div className="relative w-full max-w-[1240px] mt-[30px] mx-auto grid grid-cols-2 md:grid-cols-4 lg:flex lg:justify-center items-start lg:items-end px-6 sm:px-10 lg:px-5 z-10 gap-y-8 lg:gap-10 text-center overflow-visible">
-        {recognitions.map((item, i) => (
-          <div
-            key={i}
-            className="rec-node relative flex flex-col items-center w-full lg:w-[140px] min-w-0"
-            style={{ marginTop: `${item.offset}px` }}
-          >
+      <div className="relative w-full max-w-[1240px] mt-[30px] mx-auto px-6 sm:px-10 lg:px-5 z-10">
+        {/* Mobile/tablet grid; keep the current responsive mobile layout intact */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:hidden text-center overflow-visible">
+          {recognitions.map((item, i) => (
             <div
-              style={{
-                textAlign: "center",
-                marginBottom: 12,
-                opacity: vis ? 1 : 0,
-                transform: vis ? "translateY(0)" : "translateY(24px)",
-                transition: `all .8s cubic-bezier(0.16, 1, 0.3, 1) ${
-                  i * 0.1 + 0.4
-                }s`,
-              }}
+              key={`mobile-${i}`}
+              className="rec-node relative flex flex-col items-center w-full min-w-0"
             >
               <div
                 style={{
-                  fontFamily: "'DM Sans',sans-serif",
-                  fontSize: 11,
-                  color: "rgba(255,255,255,0.6)",
-                  fontWeight: 700,
-                  letterSpacing: ".15em",
-                  textTransform: "uppercase",
-                  marginBottom: 6,
+                  textAlign: "center",
+                  marginBottom: 12,
+                  opacity: vis ? 1 : 0,
+                  transform: vis ? "translateY(0)" : "translateY(24px)",
+                  transition: `all .8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.1 + 0.4}s`,
                 }}
               >
-                {item.topText}
+                <div
+                  style={{
+                    fontFamily: "'DM Sans',sans-serif",
+                    fontSize: 11,
+                    color: "rgba(255,255,255,0.6)",
+                    fontWeight: 700,
+                    letterSpacing: ".15em",
+                    textTransform: "uppercase",
+                    marginBottom: 6,
+                  }}
+                >
+                  {item.topText}
+                </div>
+
+                <div
+                  style={{
+                    fontFamily: "'Sora',sans-serif",
+                    fontWeight: 900,
+                    fontSize: "clamp(22px, 3.5vw, 32px)",
+                    color: "#ffffff",
+                    lineHeight: 1,
+                    letterSpacing: "-.03em",
+                    textShadow: `0 0 24px ${item.color}80`,
+                  }}
+                >
+                  {item.highlight}
+                </div>
+
+                <div
+                  style={{
+                    fontFamily: "'DM Sans',sans-serif",
+                    fontSize: 11,
+                    color: "rgba(255,255,255,0.85)",
+                    fontWeight: 700,
+                    letterSpacing: ".1em",
+                    textTransform: "uppercase",
+                    marginTop: 8,
+                  }}
+                >
+                  {item.bottomText}
+                </div>
               </div>
 
               <div
+                className="hidden lg:block"
                 style={{
-                  fontFamily: "'Sora',sans-serif",
-                  fontWeight: 900,
-                  fontSize: "clamp(22px, 3.5vw, 32px)",
-                  color: "#ffffff",
-                  lineHeight: 1,
-                  letterSpacing: "-.03em",
-                  textShadow: `0 0 24px ${item.color}80`,
+                  width: 3.5,
+                  height: item.height,
+                  background: `linear-gradient(to top, transparent, ${item.color}40, transparent)`,
+                  position: "relative",
+                  overflow: "hidden",
+                  opacity: vis ? 1 : 0,
+                  transition: `opacity 1s ease 1s`,
                 }}
               >
-                {item.highlight}
-              </div>
-
-              <div
-                style={{
-                  fontFamily: "'DM Sans',sans-serif",
-                  fontSize: 11,
-                  color: "rgba(255,255,255,0.85)",
-                  fontWeight: 700,
-                  letterSpacing: ".1em",
-                  textTransform: "uppercase",
-                  marginTop: 8,
-                }}
-              >
-                {item.bottomText}
+                <div
+                  className="energy-pulse"
+                  style={{
+                    backgroundColor: item.color,
+                    animationDelay: `${i * 0.3}s`,
+                  }}
+                />
               </div>
             </div>
+          ))}
+        </div>
 
-            <div
-              className="hidden lg:block"
-              style={{
-                width: 3.5,
-                height: item.height,
-                background: `linear-gradient(to top, transparent, ${item.color}40, transparent)`,
-                position: "relative",
-                overflow: "hidden",
-                opacity: vis ? 1 : 0,
-                transition: `opacity 1s ease 1s`,
-              }}
-            >
+        {/* Desktop absolute layout; keeps mobile code untouched and only applies on lg+ */}
+        <div className="hidden lg:block relative h-[650px] w-full">
+          {recognitions.map((item, i) => {
+            const desktopStyle = {
+              position: "absolute",
+              width: 180,
+              maxWidth: "220px",
+              ...item.desktopPos,
+              transform: item.desktopPos?.right ? "translateX(0)" : "translateX(-50%)",
+              zIndex: 20,
+            };
+
+            return (
               <div
-                className="energy-pulse"
-                style={{
-                  backgroundColor: item.color,
-                  animationDelay: `${i * 0.3}s`,
-                }}
-              />
-            </div>
-          </div>
-        ))}
+                key={`desktop-${i}`}
+                className="rec-node absolute flex flex-col items-center min-w-0"
+                style={desktopStyle}
+              >
+                <div
+                  style={{
+                    textAlign: "center",
+                    marginBottom: 12,
+                    opacity: vis ? 1 : 0,
+                    transform: vis ? "translateY(0)" : "translateY(24px)",
+                    transition: `all .8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.1 + 0.4}s`,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: "'DM Sans',sans-serif",
+                      fontSize: 11,
+                      color: "rgba(255,255,255,0.6)",
+                      fontWeight: 700,
+                      letterSpacing: ".15em",
+                      textTransform: "uppercase",
+                      marginBottom: 6,
+                    }}
+                  >
+                    {item.topText}
+                  </div>
+
+                  <div
+                    style={{
+                      fontFamily: "'Sora',sans-serif",
+                      fontWeight: 900,
+                      fontSize: "clamp(22px, 2.4vw, 34px)",
+                      color: "#ffffff",
+                      lineHeight: 1,
+                      letterSpacing: "-.03em",
+                      textShadow: `0 0 24px ${item.color}80`,
+                    }}
+                  >
+                    {item.highlight}
+                  </div>
+
+                  <div
+                    style={{
+                      fontFamily: "'DM Sans',sans-serif",
+                      fontSize: 11,
+                      color: "rgba(255,255,255,0.85)",
+                      fontWeight: 700,
+                      letterSpacing: ".1em",
+                      textTransform: "uppercase",
+                      marginTop: 8,
+                    }}
+                  >
+                    {item.bottomText}
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    width: 3.5,
+                    height: item.height,
+                    background: `linear-gradient(to top, transparent, ${item.color}40, transparent)`,
+                    position: "relative",
+                    overflow: "hidden",
+                    opacity: vis ? 1 : 0,
+                    transition: `opacity 1s ease 1s`,
+                  }}
+                >
+                  <div
+                    className="energy-pulse"
+                    style={{
+                      backgroundColor: item.color,
+                      animationDelay: `${i * 0.3}s`,
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Ambient bottom glow */}
@@ -2400,7 +2538,7 @@ function CTABanner() {
   const [ref, vis] = useVisible(0.15);
   return (
     <section ref={ref} style={{ background: "#080810", padding: "40px 0" }}>
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 32px", textAlign: "center" }}>
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 clamp(10px, 4vw, 32px)", textAlign: "center" }}>
         <div style={{
           borderRadius: 24, padding: "36px 32px", position: "relative", overflow: "hidden",
           background: "linear-gradient(135deg,rgba(168,85,247,.12),rgba(56,189,248,.08))",
@@ -2731,7 +2869,7 @@ function RankingSection() {
   }, []);
 
   return (
-    <section ref={ref} id="ranking" style={{ background: "#f8fafc", padding: "100px 0 120px", position: "relative", overflow: "hidden" }}>
+    <section ref={ref} id="ranking" style={{ background: "#f8fafc", padding: "clamp(30px, 6vw, 100px) 0 clamp(30px, 7vw, 120px)", position: "relative", overflow: "hidden" }}>
 
       {/* Subtle background orbs */}
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
@@ -2739,7 +2877,7 @@ function RankingSection() {
         <div style={{ position: "absolute", bottom: "-10%", left: "-5%", width: "45vw", height: "45vw", background: "radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 60%)", filter: "blur(80px)" }} />
       </div>
 
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px", position: "relative", zIndex: 10 }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(10px, 4vw, 32px)", position: "relative", zIndex: 10 }}>
 
         {/* Header */}
         <div style={{
