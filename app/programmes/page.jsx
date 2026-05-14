@@ -25,7 +25,7 @@ const schoolsData = [
     slug: "engineering",
     color: "#0099ff", colorHi: "#40d0ff",
     programs: [
-      { category: "UNDERGRADUATE PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Mechanical Engineering", "B.Tech Civil Engineering", "B.Tech Electronics and Communication Engineering", "B.Tech Chemical Engineering", "B.Tech Biotechnology", "B.Tech Mechatronics Engineering", "B.Tech Robotics and Automation", "B.Tech Food Technology", "B.Tech Electric Vehicle Technology"] }
+      { category: "UNDERGRADUATE PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Mechanical Engineering", "B.Tech", "B.Tech Electronics and Communication Engineering", "B.Tech", "B.Tech Mechatronics Engineering", "B.Tech Robotics and Automation", "B.Tech Food Technology", "B.Tech Electric Vehicle Technology"] }
     ]
   },
   {
@@ -70,8 +70,8 @@ const schoolsData = [
     color: "#ff0077", colorHi: "#ff55bb",
     programs: [
       { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Fashion Technology"] },
-      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Fashion Design", "B.Sc Visual Communication (AI-Ready Animation & VFX Design)", "B.Sc Digital Media & Content Creation", "B.Sc Film Production"] },
-      { category: "B.A PERFORMING ARTS", level: "UNDERGRADUATE", courses: ["B.A Theatre / Acting", "B.A Dance", "B.A Music (Vocal / Instrumental)"] },
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Fashion Design", "B.Sc Visual Communication (AI-Ready Animation & VFX Design)", "B.Sc Digital And Cyber Forensics Science"] },
+      { category: "B.A PERFORMING ARTS", level: "UNDERGRADUATE", courses: ["Viscom"] },
       { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.A Journalism and Mass Communication"] }
     ]
   },
@@ -83,7 +83,6 @@ const schoolsData = [
     programs: [
       { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Psychology", "B.Sc Behavioural Science"] },
       { category: "BBA PROGRAMMES", level: "UNDERGRADUATE", courses: ["BBA Hospital & Health Service Management"] },
-      { category: "B.A PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.A Counselling Studies"] },
       { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Applied Psychology", "M.Sc Clinical Psychology", "M.Sc Behavioural Science"] }
     ]
   }
@@ -180,7 +179,7 @@ function SchoolBanner({ school }) {
             All Programmes
           </div>
           <div style={{ fontSize: 13, color: "rgba(255,255,255,.55)", marginTop: 6, letterSpacing: ".12em", textTransform: "uppercase" }}>
-            7 World-Class Schools · 100+ Programmes
+            9 World-Class Schools · 100+ Programmes
           </div>
         </div>
       </div>
@@ -335,7 +334,7 @@ function ProgrammesContent() {
               Find Your Future at RGU
             </h1>
             <p style={{ fontSize: 16, color: "#64748b", maxWidth: 520, margin: "0 auto" }}>
-              7 world-class schools · 100+ programmes · Apply for 2026 intake
+              9 world-class schools · 100+ programmes · Apply for 2026 intake
             </p>
           </div>
         </div>

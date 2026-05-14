@@ -672,7 +672,7 @@ function SchoolsSection() {
 
               {hovered===i && (
                 <div style={{ marginTop:"14px" }}>
-                  <a href="/programs" style={{
+                  <a href="#" style={{
                     display:"inline-block", padding:"8px 18px",
                     background:"rgba(255,255,255,0.25)",
                     border:"1px solid rgba(255,255,255,0.5)",
@@ -687,7 +687,7 @@ function SchoolsSection() {
 
         {/* CTA */}
         <div style={{ textAlign:"center", marginTop:"56px", opacity: visible?1:0, transition:"opacity 0.7s 0.5s ease" }}>
-          <a href="/programs" style={{
+          <a href="#" style={{
             display:"inline-flex", alignItems:"center", gap:"10px",
             padding:"16px 40px",
             background:`linear-gradient(135deg,${C.blue},${C.navy})`,

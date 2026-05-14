@@ -74,9 +74,9 @@ function useVisible(threshold = 0.12) {
    1. HERO  (full-screen bgvideo, logo, heading, carousel, CTA)
 ═══════════════════════════════════════════════════════════════════ */
 const heroCarousel = [
-  { tag: "REGISTRATIONS OPEN", line1: "UG Programs 2026", line2: "B.Tech · BBA · B.Sc · B.Des · B.Arch · B.Pharm" },
-  { tag: "APPLICATIONS LIVE", line1: "PG Programs 2026", line2: "M.Tech · MBA · M.Sc · M.Des · LLM · M.Pharm" },
-  { tag: "NOW ACCEPTING", line1: "Ph.D Research Programs", line2: "Full-time · Part-time · Industry Ph.D" },
+  { tag: "REGISTRATIONS OPEN", line1: "UG Programs 2026", line2: "B.E . B.Tech · BBA · B.Sc · B.Arch · B.Pharm · BPT . B.com . BCA . BA" },
+  { tag: "APPLICATIONS LIVE", line1: "PG Programs 2026", line2: "MBA · M.Sc . M.com . MA . M.E" },
+  { tag: "NOW ACCEPTING", line1: "Ph.D Research Programs", line2: "Full-time · Part-time" },
   { tag: "APPLY EARLY", line1: "Lateral Entry 2026", line2: "Direct 2nd year admissions now open" },
 ];
 
@@ -330,7 +330,7 @@ function HeroSection() {
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
-          <a href="/landing"
+          <a href="#"
             style={{
               display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 28px", borderRadius: 16,
               background: "transparent", border: "1.5px solid rgba(255,255,255,.22)", color: "rgba(255,255,255,.8)",
@@ -432,8 +432,8 @@ const schoolsConfig = [
     name: "School of Computing, AI & Emerging Technologies", short: "Computing & AI", color: "#8e00c4", colorHi: "#b810d6",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="20" rx="4" stroke={c} strokeWidth="1.5" /><circle cx="24" cy="24" r="5" stroke={c} strokeWidth="1.5" /><circle cx="24" cy="24" r="2" fill={c} /><path d="M19 24h-8M37 24h-8" stroke={c} strokeWidth="1.5" strokeLinecap="round" /><path d="M24 19v-6M24 35v-6" stroke={c} strokeWidth="1.5" strokeLinecap="round" /><circle cx="11" cy="24" r="2" fill={c} opacity=".6" /><circle cx="37" cy="24" r="2" fill={c} opacity=".6" /></svg>),
     programs: [
-      { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Computer Science and Engineering", "B.Tech Information Technology", "B.Tech Artificial Intelligence and Data Science", "B.Tech Artificial Intelligence and Machine Learning", "B.Tech CSE — Specialization in Data Science", "B.Tech CSE — Specialization in Cyber Security", "B.Tech CSE — Specialization in Cloud Computing", "B.Tech CSE — Specialization in Gaming Technology", "B.Tech CSE — Specialization in Full Stack Development", "B.Tech Mathematics and Computing", "B.Tech CSE — Specialization in Quantum Computing"] },
-      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Artificial Intelligence and Machine Learning", "B.Sc Computer Science", "B.Sc Computer Science (AI & Data Science)", "B.Sc Computer Science (Artificial Intelligence)", "B.Sc Computer Science (Cyber Security)", "B.Sc Computer Science (Data Science)", "B.Sc Computer Technology (Generative AI)", "B.Sc Data Science and Analytics", "B.Sc Digital and Cyber Forensics Science", "B.Sc Information Technology", "B.Sc Information Technology (Specialization in Data Science)"] },
+      // { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Computer Science and Engineering", "B.Tech Information Technology", "B.Tech Artificial Intelligence and Data Science", "B.Tech Artificial Intelligence and Machine Learning", "B.Tech CSE — Specialization in Data Science", "B.Tech CSE — Specialization in Cyber Security", "B.Tech CSE — Specialization in Cloud Computing", "B.Tech CSE — Specialization in Gaming Technology", "B.Tech CSE — Specialization in Full Stack Development", "B.Tech Mathematics and Computing", "B.Tech CSE — Specialization in Quantum Computing"] },
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Artificial Intelligence and Machine Learning", "B.Sc Computer Science", "B.Sc Computer Science (AI & Data Science)", "B.Sc Computer Science (Artificial Intelligence)", "B.Sc Computer Science (Cyber Security)", "B.Sc Computer Technology (Generative AI)", "B.Sc Digital and Cyber Forensics Science", "B.Sc Information Technology"] },
       { category: "BCA PROGRAMMES", level: "UNDERGRADUATE", courses: ["BCA", "BCA (Artificial Intelligence)"] },
       { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Artificial Intelligence and Data Science", "M.Sc Computer Science", "M.Sc Data Science and Business Analytics"] }
     ]
@@ -442,7 +442,7 @@ const schoolsConfig = [
     name: "School of Engineering & Applied Technologies", short: "Engineering & Applied Tech", color: "#0073cc", colorHi: "#1a9ee6",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill={c + "18"} stroke={c} strokeWidth="1.5" strokeDasharray="4 3" /><path d="M16 32l8-16 8 16" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><circle cx="24" cy="16" r="3" fill={c} /><path d="M12 36h24" stroke={c} strokeWidth="1.5" strokeLinecap="round" /><rect x="20" y="26" width="8" height="6" rx="1" stroke={c} strokeWidth="1.5" /></svg>),
     programs: [
-      { category: "UNDERGRADUATE PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Mechanical Engineering", "B.Tech Civil Engineering", "B.Tech Electronics and Communication Engineering", "B.Tech Chemical Engineering", "B.Tech Biotechnology", "B.Tech Mechatronics Engineering", "B.Tech Robotics and Automation", "B.Tech Food Technology", "B.Tech Electric Vehicle Technology"] }
+      { category: "UNDERGRADUATE PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.E Computer Science Engineering", "B.E CSE Artificial Intelligence and Machine Learning",  "B.E CSE Cyber Security", "B.E CSE Regional Language", "B.E ECE", "B.E Mech", "B.E Mechatronics" , "B.Tech AIDS" , "B.Tech BioTechnology" , "B.Tech Information Technology" ] }
     ]
   },
   {
@@ -460,9 +460,9 @@ const schoolsConfig = [
     name: "School of Applied Biosciences, Food & Agri-Tech", short: "Biosciences & Agri-Tech", color: "#00995c", colorHi: "#00cc88",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 36V22" stroke={c} strokeWidth="2" strokeLinecap="round" /><path d="M24 22c0-8-10-10-10-10s0 10 10 10z" stroke={c} strokeWidth="1.5" strokeLinejoin="round" fill={c + "20"} /><path d="M24 26c0-6 10-8 10-8s0 8-10 8z" stroke={c} strokeWidth="1.5" strokeLinejoin="round" fill={c + "20"} /><path d="M12 36h24" stroke={c} strokeWidth="1.5" strokeLinecap="round" /></svg>),
     programs: [
-      { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Food Technology", "B.Tech Biotechnology"] },
+      { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech BioTechnology"] },
       { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Biotechnology", "B.Sc Microbiology"] },
-      { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Biotechnology", "M.Sc Microbiology"] }
+      { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Microbiology", "M.Sc BioTechnology"] }
     ]
   },
   {
@@ -478,9 +478,9 @@ const schoolsConfig = [
     name: "School of Design, Media & Performing Arts", short: "Design, Media & Arts", color: "#cc005f", colorHi: "#e62b9a",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke={c} strokeWidth="1.5" /><circle cx="24" cy="18" r="4" stroke={c} strokeWidth="1.5" /><path d="M16 34c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke={c} strokeWidth="1.5" strokeLinecap="round" /><path d="M32 14l4-4M16 14l-4-4" stroke={c} strokeWidth="1.5" strokeLinecap="round" /></svg>),
     programs: [
-      { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Fashion Technology"] },
-      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Fashion Design", "B.Sc Visual Communication (AI-Ready Animation & VFX Design)", "B.Sc Digital Media & Content Creation", "B.Sc Film Production"] },
-      { category: "B.A PERFORMING ARTS", level: "UNDERGRADUATE", courses: ["B.A Theatre / Acting", "B.A Dance", "B.A Music (Vocal / Instrumental)"] },
+      // { category: "B.TECH PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Tech Fashion Technology"] },
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Fashion Design", "B.Sc Visual Communication (AI-Ready Animation & VFX Design)", "B.Sc Digital And Cyber Forensics Science"] },
+      { category: "B.A PERFORMING ARTS", level: "UNDERGRADUATE", courses: ["English Literature"] },
       { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.A Journalism and Mass Communication"] }
     ]
   },
@@ -488,10 +488,9 @@ const schoolsConfig = [
     name: "School of Health Sciences & Rehabilitation", short: "Health Sciences", color: "#9900cc", colorHi: "#cc22e6",
     svg: (c) => (<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke={c} strokeWidth="1.5" /><path d="M24 16v16M16 24h16" stroke={c} strokeWidth="2.5" strokeLinecap="round" /><circle cx="24" cy="24" r="5" fill={c + "30"} /></svg>),
     programs: [
-      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Psychology", "B.Sc Behavioural Science"] },
-      { category: "BBA PROGRAMMES", level: "UNDERGRADUATE", courses: ["BBA Hospital & Health Service Management"] },
-      { category: "B.A PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.A Counselling Studies"] },
-      { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Applied Psychology", "M.Sc Clinical Psychology", "M.Sc Behavioural Science"] }
+      { category: "B.SC PROGRAMMES", level: "UNDERGRADUATE", courses: ["B.Sc Psychology", "B.Sc MicroBiology with GIP"] },
+      // { category: "BBA PROGRAMMES", level: "UNDERGRADUATE", courses: ["BBA Hospital & Health Service Management"] },
+      { category: "POSTGRADUATE PROGRAMMES", level: "POSTGRADUATE", courses: ["M.Sc Applied Psychology", "M.Sc Clinical Psychology" ] }
     ]
   }
 ];
@@ -606,7 +605,7 @@ function CoursesSection() {
             fontFamily: "'DM Sans',sans-serif", color: "rgba(15,23,42,.65)", fontSize: 16,
             maxWidth: 560, margin: "0 auto", lineHeight: 1.75
           }}>
-            {schoolsConfig.length} world-class schools · {schoolsConfig.reduce((a, s) => a + s.programs.reduce((b, p) => b + p.courses.length, 0), 0)}+ programmes
+            {9} world-class schools · {schoolsConfig.reduce((a, s) => a + s.programs.reduce((b, p) => b + p.courses.length, 0), 0)}+ programmes
           </p>
         </div>
 
@@ -891,7 +890,7 @@ function CoursesSection() {
                       fontFamily: "'DM Sans',sans-serif", fontSize: 11, fontWeight: 700,
                       letterSpacing: ".22em", textTransform: "uppercase", color: activeData.color, marginBottom: 4
                     }}>
-                      {activeData.programs.reduce((a, p) => a + p.courses.length, 0)} Programmes Available
+                      {activeData.programs.reduce((a, p) => a + p.courses.length, 0)}+ Programmes Available
                     </div>
                     <h3 style={{
                       fontFamily: "'Sora',sans-serif", fontWeight: 800,
@@ -1131,7 +1130,7 @@ function RGUWaySection() {
             }}>
               Six pillars that define our philosophy — and your transformation from student to leader.
             </p>
-            <a href="/landing"
+            <a href="#"
               style={{
                 display: "inline-flex", alignItems: "center", gap: 8, padding: "13px 28px", borderRadius: 12,
                 background: "linear-gradient(135deg,#a855f7,#6d28d9)", color: "#fff",
@@ -2134,7 +2133,7 @@ function RecognitionSection() {
         </a>
 
         <a
-          href="/landing"
+          href="#"
           title="RGU Way"
           className="shrink-0"
           style={{
