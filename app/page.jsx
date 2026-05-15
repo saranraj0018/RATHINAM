@@ -332,7 +332,7 @@ function HeroSection() {
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
-          <a href="#"
+          <a href="/landing"
             style={{
               display: "inline-flex", alignItems: "center", gap: 8, padding: isMobile ? "12px 22px" : "15px 28px", borderRadius: 16,
               background: "transparent", border: "1.5px solid rgba(255,255,255,.22)", color: "rgba(255,255,255,.8)",
@@ -1158,7 +1158,7 @@ function RGUWaySection() {
             }}>
               Six pillars that define our philosophy — and your transformation from student to leader.
             </p>
-            <a href="#"
+            <a href="/landing"
               style={{
                 display: "inline-flex", alignItems: "center", gap: 8, padding: "13px 28px", borderRadius: 12,
                 background: "linear-gradient(135deg,#a855f7,#6d28d9)", color: "#fff",
