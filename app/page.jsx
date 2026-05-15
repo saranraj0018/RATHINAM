@@ -633,7 +633,7 @@ function CoursesSection() {
           const matchSet = new Set(filteredSchools.map(s => s.name));
           const isDim = (sc) => search.trim() !== "" && !matchSet.has(sc.name);
 
-          const Bubble = ({ sc, i, extraStyle = {} }) => {
+          const Bubble = ({ sc, i, extraStyle = {}, compact = false }) => {
             const isActive = activeSchool === sc.name;
             const dim = isDim(sc);
             const totalCourses = sc.programs.reduce((a, p) => a + p.courses.length, 0);
@@ -694,10 +694,11 @@ function CoursesSection() {
                 <button
                   onClick={() => !dim && setActiveSchool(isActive ? null : sc.name)}
                   style={{
-                    display: "flex", flexDirection: "column", alignItems: "center", gap: 13,
-                    padding: "26px 18px 20px", borderRadius: 28,
+                    display: "flex", flexDirection: "column", alignItems: "center", gap: compact ? 8 : 13,
+                    padding: compact ? "16px 10px 14px" : "26px 18px 20px", borderRadius: compact ? 20 : 28,
                     cursor: dim ? "default" : "pointer", outline: "none",
-                    minHeight: 200, zIndex: 10, width: 230, minWidth: 230, maxWidth: 230,
+                    minHeight: compact ? 148 : 200, zIndex: 10,
+                    width: compact ? 155 : 230, minWidth: compact ? 155 : 230, maxWidth: compact ? 155 : 230,
                     background: `linear-gradient(135deg, ${sc.color} 0%, ${sc.colorHi || sc.color} 100%)`,
                     border: `1px solid rgba(255,255,255,0.4)`,
                     boxShadow: isActive
@@ -720,7 +721,7 @@ function CoursesSection() {
 
                   {/* icon */}
                   <div style={{
-                    width: 64, height: 64, borderRadius: 20, position: "relative",
+                    width: compact ? 44 : 64, height: compact ? 44 : 64, borderRadius: compact ? 14 : 20, position: "relative",
                     background: "rgba(255,255,255,.2)", border: "1.5px solid rgba(255,255,255,.4)",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     boxShadow: "0 4px 12px rgba(0,0,0,.05)", transition: "all .4s"
@@ -736,7 +737,7 @@ function CoursesSection() {
 
                   {/* name */}
                   <div style={{
-                    fontFamily: "'Sora',sans-serif", fontSize: 13, fontWeight: 800, lineHeight: 1.3,
+                    fontFamily: "'Sora',sans-serif", fontSize: compact ? 10 : 13, fontWeight: 800, lineHeight: 1.3,
                     color: "#ffffff", opacity: isActive ? 1 : 0.95, textAlign: "center", transition: "all .3s"
                   }}>
                     {sc.short}
@@ -870,9 +871,9 @@ function CoursesSection() {
               {/* ── MOBILE STACKED LAYOUT ── */}
               <div className="flex lg:hidden flex-col gap-10 mt-6 md:mt-10 px-2 md:px-4">
                 {SearchBar}
-                <div className="grid grid-cols-2 place-items-center gap-4 sm:gap-6 mt-4">
+                <div className="grid grid-cols-2 place-items-center gap-3 mt-4">
                   {schoolsConfig.map((sc, index) => (
-                    <Bubble key={index} sc={sc} i={index} />
+                    <Bubble key={index} sc={sc} i={index} compact={true} />
                   ))}
                 </div>
               </div>
@@ -2083,9 +2084,10 @@ function RecognitionSection() {
             height: "100%",
             display: "block",
             objectFit: "cover",
-            objectPosition: isMobile ? "44% 80%" : "bottom center",
+            objectPosition: isMobile ? "47% 80%" : "bottom center",
             opacity: vis ? 1 : 0,
             transform: vis ? "translateY(0)" : "translateY(120px)",
+            transformOrigin: "center",
             transition: "all 1.5s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
           onError={(e) => {
